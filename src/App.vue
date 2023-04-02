@@ -4,18 +4,19 @@
       <el-header>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
           @select="handleSelect">
-          <!-- <el-menu-item index="index" style="font:1.5em bold Arial;">Xinrui's Blog</el-menu-item> -->
+          <el-menu-item index="1">Xinrui's Blog</el-menu-item>
           <div class="flex-grow" />
           <el-menu-item index="index">Home</el-menu-item>
           <el-menu-item index="articles">Articles</el-menu-item>
           <el-menu-item index="about">About</el-menu-item>
+          <el-menu-item index="message">message board</el-menu-item>
         </el-menu>
       </el-header>
       <el-main>
         <router-view></router-view>
       </el-main>
       <el-footer>
-        <p class="footer">Xinrui's Blog</p>
+        <p class="page-footer">Xinrui's Blog</p>
       </el-footer>
     </el-container>
   </div>
@@ -26,7 +27,11 @@
 
 
   let handleSelect = (key) => {
-    router.push(`/${key}`)
+    if(key == '1') {
+      router.push('/index')
+    } else {
+      router.push(`/${key}`)
+    }
   }
 
 </script>
@@ -36,7 +41,7 @@
     flex-grow: 1;
   }
 
-  .footer {
+  .page-footer {
     text-align: center;
   }
 </style>

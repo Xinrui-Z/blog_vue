@@ -6,16 +6,29 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         {
+            name: 'index',
             path: '/index',
             component: () => import('@/views/index.vue'),
         },
         {
+            name: 'articles',
             path: '/articles',
-            component: () => import('@/views/Articles.vue'),
+            component: () => import('@/views/articles/Articles.vue'),
         },
         {
+            name: 'detail',
+            path: '/articles/detail',
+            component: () => import('@/views/articles/ArticleDetail.vue')
+        },
+        {
+            name: 'about',
             path: '/about',
-            component: () => import('@/views/About.vue'),
+            component: () => import('@/views/about/About.vue'),
+        },
+        {
+            name: 'message',
+            path: '/message',
+            component: () => import('@/views/message-board/MessageBoard.vue')
         },
         {
             path: '/:pathMatch(.*)',

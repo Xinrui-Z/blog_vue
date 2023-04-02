@@ -1,18 +1,11 @@
 <template>
-    <PageCard page-title="Xinrui Zhou" page-description="hahhah" />
+    <PageCard page-title="Articles" page-description="hahhah"/>
     <el-row>
       <el-col :span="16" :offset="4">
-        <div class="tags">
-            <p class="tags-title">Tags</p>
-            <el-badge :value="12" class="tags-item" v-for="(item, index) in 6" :key="index" :type="tagType[index%4]">
-                <el-button>Leetcode</el-button>
-            </el-badge>
-        </div>
         <div class="articles">
-            <p class="articles-title">Recent Articles</p>
-            <el-row justify="space-evenly" :gutter="50">
+            <el-row justify="space-evenly" :gutter="60">
                 <el-col :lg="7"  :md="16" v-for="item in 6" :key="item">
-                    <el-card :body-style="{ padding: '0px' }" shadow="hover" >
+                    <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goDetail">
                         <img
                             src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" />
                         <div style="padding: 14px">
@@ -33,25 +26,20 @@
 </template>
 
 <script lang="ts" setup>
+    import router from '@/router'
     import { ref, reactive } from 'vue'
     import PageCard from '@/components/PageCard.vue'
 
-    const tagType = reactive(['success', 'info', 'warning', 'danger'])
+    let goDetail = () => {
+        router.push('/articles/detail')
+    }
 </script>
 
 <style scoped>
-    /* tags */
-    .tags {
-        margin-top: 30px;
-    }
-    .tags-title {
-        font: large bolder Helvetica;
-    }
-    .tags-item {
-        margin: 20px;
-    }
-
     /* articles */
+    .articles {
+        margin: 36px;
+    }
     .articles img {
         width: 100%;
         height: 260px;

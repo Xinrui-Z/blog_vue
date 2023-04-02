@@ -1,5 +1,5 @@
 <template>
-<h1>Articles</h1>
+<h1>留言板</h1>
 </template>
 
 <script setup lang='ts'>
