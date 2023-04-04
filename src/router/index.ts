@@ -40,15 +40,32 @@ const router = createRouter({
             component: () => import('@/views/BackStage.vue'),
             children: [
                 {
+                    name: 'login',
+                    path: '',
+                    component: () => import('@/views/backstage/Login.vue'),
+                },
+                {
                     name: 'backindex',
-                    path: '/backindex',
-                    component: () => import('@/views/backstage/index.vue')
+                    path: 'index',
+                    component: () => import('@/views/backstage/index.vue'),
+                    children: [
+                        {
+                            name: 'usercenter',
+                            path: '',
+                            component:() => import('@/views/backstage/UserCenter.vue')
+                        },
+                        {
+                            name: 'blogmanage',
+                            path: 'manage',
+                            component:() => import('@/views/backstage/BlogManage.vue')
+                        }
+                    ]
                 }
             ]
         },
         {
             path: '/:pathMatch(.*)',
-            redirect: '/index',
+            redirect: '/',
         }
     ]
 })
