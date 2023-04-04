@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { reqPostArticle } from "@/api/index.ts"
-import { Article } from "@/types/type"
+import { Article } from '@/types/type'
 import router from '@/router'
 
 export const useArticleStore = defineStore('article', {

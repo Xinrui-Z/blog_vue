@@ -19,10 +19,11 @@
     import { Calendar, Search } from '@element-plus/icons-vue'
     import { ref } from 'vue'
     import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
+    import { User } from '@/types/type'
 
     let store = useUserInfoStore()
 
-    let user = ref<user>({})
+    let user = ref<User>({})
 
     let goLogin = () => {
         store.login(user.value)

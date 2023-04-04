@@ -11,6 +11,30 @@ export function reqPostLogin(data: User) {
       })
 }
 
+// 获取用户信息
+export function reqGetUserInfo() {
+  return request({
+    url: '/info',
+    method: 'get'
+  })
+}
+
+// 修改昵称和个签
+export function reqPutNickAndSign(data: User) {
+  return request({
+    url: `/nickAndSign/${data.nickName}/${data.sign}`,
+    method: 'put'
+  })
+}
+
+// 修改密码
+export function reqPutPwd(pwd: string) {
+  return request({
+    url: `/password/${pwd}`,
+    method: 'put'
+  })
+}
+
 // 添加文章
 export function reqPostArticle(data: Article) {
   console.log('data',data)
