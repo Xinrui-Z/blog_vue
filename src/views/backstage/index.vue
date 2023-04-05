@@ -9,12 +9,16 @@
                     </el-icon>
                     <span>个人中心</span>
                 </el-menu-item>
-                <el-menu-item index="2">
-                    <el-icon>
-                        <setting />
-                    </el-icon>
-                    <span>博客管理</span>
-                </el-menu-item>
+                <el-sub-menu index="2">
+                    <template #title>
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        创作中心
+                    </template>
+                    <el-menu-item index="2-1">我的博客</el-menu-item>
+                    <el-menu-item index="2-2">新建博客</el-menu-item>
+                </el-sub-menu>
             </el-menu>
         </el-col>
         <el-col :span="18" :offset="1">
@@ -24,14 +28,20 @@
 </template>
 
 <script lang="ts" setup>
-    import { Document, Location, Setting} from '@element-plus/icons-vue'
+    import { Document, Location, Setting } from '@element-plus/icons-vue'
     import router from '@/router'
 
     let handleSelect = (index) => {
-        if(index == '1') {
-            router.push('/backstage/index')
-        } else {
-            router.push('/backstage/index/manage')
+        switch (index) {
+            case "1":
+                router.push('/backstage/index')
+                break
+            case "2-1":
+                router.push('/backstage/index/manage')
+                break
+            default:
+                router.push('/backstage/index/manage/edit')
+                break
         }
     }
 </script>

@@ -1,8 +1,6 @@
 <template>
-    <h2>博客管理</h2>
-
     <div class="editor-div">
-        <v-md-editor v-model="text" height="400px" :include-level="[3, 4]" @save="handleSave"></v-md-editor>
+        <v-md-editor v-model="text" height="400px" @save="handleSave" :model-value="article.articleContent" />
         <el-form label-width="100px" style="max-width: 460px" label-position="left">
             <el-form-item label="文章标签">
                 <el-input v-model="article.articleLabel" />
@@ -30,17 +28,27 @@
 </template>
 
 <script setup lang='ts'>
-    import { ref, reactive, toRaw } from 'vue'
+    import { ref, reactive, toRaw, watch } from 'vue'
     import { Article } from '@/types/type'
     import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue'
     import type { UploadFile, UploadUserFile, UploadProps } from 'element-plus'
     import { useArticleStore } from '@/store/useArticleStore.ts'
+    import BlogEditPanel from '@/views/backstage/component/BlogEditPanel.vue'
+    import { useRouter } from 'vue-router';
 
     const dialogImageUrl = ref('')
     const dialogVisible = ref(false)
     const disabled = ref(false)
+    const articleId = ref()
 
     const store = useArticleStore()
+
+    const router = useRouter()
+
+    if (router.currentRoute.value.query.id != undefined) {
+        store.getArticle(router.currentRoute.value.query.id)
+        articleId.value = router.currentRoute.value.query.id
+    }
 
     let article = reactive < Article > ({
         articleLabel: '',
@@ -48,6 +56,17 @@
         articleImg: '',
         articleAbstract: '',
         articleContent: ''
+    })
+
+
+    watch(() => store.article, () => {
+        let articleObj = toRaw(store.article)
+        article.articleLabel = articleObj.articleLabel
+        article.articleTitle = articleObj.articleTitle
+        article.articleImg = articleObj.articleImg
+        article.articleAbstract = articleObj.articleAbstract
+        article.articleContent = articleObj.articleContent
+        article.id = articleId.value
     })
 
     const handleRemove: UploadProps['onRemove'] = (file: UploadFile) => {
@@ -65,7 +84,11 @@
 
     const handleSave = (text, html) => {
         article.articleContent = html
-        store.addArticle(toRaw(article))
+        if(router.currentRoute.value.query.id != undefined) {
+            store.putArticle(toRaw(article))
+        } else {
+            store.addArticle(toRaw(article))
+        }
     }
 
 </script>

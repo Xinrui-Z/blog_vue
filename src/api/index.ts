@@ -35,12 +35,36 @@ export function reqPutPwd(pwd: string) {
   })
 }
 
-// 添加文章
+// 添加博客
 export function reqPostArticle(data: Article) {
-  console.log('data',data)
   return request({
-    url: '/article/articles',
+    url: '/article/addArticle',
     data,
     method: 'post'
+  })
+}
+
+// 获取博客列表
+export function reqGetArticleList() {
+  return request({
+    url: '/article/articles',
+    method: 'get'
+  })
+}
+
+// 修改博客
+export function reqPutArticle(data: Article) {
+  return request({
+    url: `/article/putArticle`,
+    data,
+    method: 'post'
+  })
+}
+
+// 获取博客信息
+export function reqGetArticle(aid: long) {
+  return request({
+    url: `/article/article/${aid}`,
+    method: 'get'
   })
 }
