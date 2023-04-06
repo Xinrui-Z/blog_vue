@@ -3,8 +3,8 @@
         <el-col :span="24">
             <div class="info-card">
                 <img src="@/assets/images/indexbackground.jpg" class="info-card-avatar"/>
-                <p class="info-card-nickname">zhouxinrui</p>
-                <p class="info-card-sign">hhhhhh</p>
+                <p class="info-card-nickname">{{user.nickName}}</p>
+                <p class="info-card-sign">{{user.sign}}</p>
             </div>
         </el-col>
     </el-row>
@@ -12,8 +12,8 @@
         <el-col :span="16" :offset="4">
             <div class="connect">
                 <p class="item-title">Connect</p>
-                <el-link :icon="StarFilled" type="primary" class="connect-link">Github: https://github.com/XinrZhou</el-link>
-                <el-link :icon="Message" type="info" class="connect-link">Email: zhouxinrui02@gmail.com</el-link>
+                <el-link :icon="StarFilled" type="primary" class="connect-link">Github: {{user.github}}</el-link>
+                <el-link :icon="Message" type="info" class="connect-link">Email: {{user.email}}</el-link>
             </div>
             <div class="tags">
                 <p class="item-title">Tags</p>
@@ -25,33 +25,47 @@
             <div class="articles">
                 <p class="item-title">Recent Articles</p>
                 <el-row justify="space-evenly" :gutter="50">
-                    <el-col :lg="7" :md="16" v-for="item in 6" :key="item">
+                    <el-col :lg="7" :md="16" v-for="article in articles" :key="article.id">
                         <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                            <img
-                                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" />
+                            <img :src="article.imgUrl" />
                             <div style="padding: 14px">
                                 <el-tag round>
-                                    Java
+                                    {{article.label}}
                                 </el-tag>
-                                <p>Yummy hamburger</p>
-                                <el-button text class="button">Operating</el-button>
+                                <p>{{article.title}}</p>
+                                <p>{{article.digest}}</p>
                                 <el-divider />
-                                <span>2023/4/2</span>
+                                <span>{{article.updateTime}}</span>
                             </div>
                         </el-card>
                     </el-col>
                 </el-row>
+                <el-button round class="article-btn" @click="goArticles">Know More</el-button>
             </div>
         </el-col>
     </el-row>
 </template>
 
 <script lang="ts" setup>
-    import { ref, reactive } from 'vue'
+    import { ref, reactive, computed } from 'vue'
     import { StarFilled, Message } from '@element-plus/icons-vue'
-    import PageCard from '@/components/PageCard.vue'
+    import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
+    import { useArticleStore } from '@/store/useArticleStore.ts'
+    import { User } from '@/types/type'
+    import router from '@/router'
+
+    let userStore = useUserInfoStore()
+    let articleStore = useArticleStore()
+    userStore.getUserInfo()
+    articleStore.getArticles(1,6)
+    const user = computed(() => userStore.user)
+    const articles = computed(() => articleStore.articleList)
 
     const tagType = reactive(['success', 'info', 'warning', 'danger'])
+
+    let goArticles = () => {
+        router.push("/articles")
+    }
 </script>
 
 <style scoped>
@@ -98,6 +112,14 @@
     }
 
     /* articles */
+    .articles {
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        -webkit-justify-content: center;
+        justify-content: center;
+        align-items: center;
+    }
     .articles img {
         width: 100%;
         height: 260px;
@@ -106,5 +128,16 @@
     .el-card {
         border-radius: 10px;
         margin: 26px auto;
+    }
+
+    .article-btn {
+        color: #F2E6CE;
+        background-color: #6E8B74;
+        margin: 10px 0;
+    }
+
+    .article-btn:hover {
+        color: #6E8B74;
+        background-color: #F2E6CE;
     }
 </style>

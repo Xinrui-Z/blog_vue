@@ -4,10 +4,16 @@
     <div class="info-card">
         <el-form :model="user" size="large">
             <el-form-item label="Nick：">
-                <el-input v-model="user.nickName" clearable />
+                <el-input v-model="admin.nickName" clearable />
             </el-form-item>
             <el-form-item label="Sign：">
-                <el-input v-model="user.sign" clearable />
+                <el-input v-model="admin.sign" clearable />
+            </el-form-item>
+            <el-form-item label="Emial：">
+                <el-input v-model="admin.email" clearable />
+            </el-form-item>
+            <el-form-item label="Github：">
+                <el-input v-model="admin.github" clearable />
             </el-form-item>
         </el-form>
     </div>
@@ -33,15 +39,15 @@
     import { ElMessage} from "element-plus"
 
     let store = useUserInfoStore()
-    store.getUserInfo()
+    store.getAdminInfo()
 
-    let user = ref<User> ({})
+    let admin = ref<User> ({})
 
     let password = ref<string> ("")
     let rePassword = ref<string> ("")
 
-    watch(() => store.user, () => {
-        user.value = store.user
+    watch(() => store.admin, () => {
+        admin.value = store.admin
     })
 
 
@@ -52,7 +58,7 @@
     }
 
     let saveNickAndSign = () => {
-        store.putNickAndSign(toRaw(user.value)) 
+        store.postInfo(toRaw(admin.value)) 
     }
 
     let savePwd = () => {

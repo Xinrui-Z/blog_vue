@@ -1,11 +1,11 @@
 <template>
-    <h2>我的文章</h2>
+    <h2>我的博客</h2>
     <el-table :data="articleList" border stripe style="width: 100%">
         <el-table-column prop="updateTime" label="Date" width="200" />
-        <el-table-column prop="articleTitle" label="Title" />
-        <el-table-column prop="articleLabel" label="Label" width="150">
+        <el-table-column prop="title" label="Title" />
+        <el-table-column prop="label" label="Label" width="150">
             <template #default="scope">
-                <el-tag>{{scope.row.articleLabel}}</el-tag>
+                <el-tag>{{scope.row.label}}</el-tag>
               </template>
         </el-table-column>
         <el-table-column label="Operations" width="180">
@@ -25,7 +25,7 @@
     import router from '@/router'
 
     const store = useArticleStore()
-    store. getArticleList()
+    store. getArticles(1, 15)
     const articleList = computed(() => store.articleList)
 
 
@@ -39,8 +39,7 @@
         console.log(index, row)
     }
     const handleDelete = (index: number, row: Article) => {
-
-        console.log(index, row)
+        store.deletArticle(row.id)
     }
 
 </script>

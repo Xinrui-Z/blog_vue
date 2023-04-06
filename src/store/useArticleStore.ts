@@ -1,25 +1,27 @@
 import { defineStore } from "pinia"
-import { reqPostArticle, reqGetArticleList, reqPutArticle, reqGetArticle } from "@/api/index.ts"
+import { reqPostArticle, reqGetArticles, reqPutArticle, reqGetArticle, reqDeleteArticle } from "@/api/index.ts"
 import { Article } from '@/types/type'
 import router from '@/router'
+import { ElMessage} from "element-plus"
 
 export const useArticleStore = defineStore('article', {
     state: () => {
         return {
-            articleList: [],
-            article: {}
+            article: {},
+            articleList: []
         }
     },
     actions: {
         // 添加博客
         addArticle(data: Article) {
             reqPostArticle(data).then(res => {
+                ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
         },
 
         // 获取博客列表
-        getArticleList() {
-            reqGetArticleList().then(res => {
+        getArticles(page: number, pageSize: number) {
+            reqGetArticles(page, pageSize).then(res => {
                 this.articleList = res.data.data.articles
             }).catch(err => Promise.reject(err))
         },
@@ -27,15 +29,22 @@ export const useArticleStore = defineStore('article', {
         // 修改博客
         putArticle(data: Article) {
             reqPutArticle(data).then(res => {
-                console.log('修改博客',res)
+                ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
         },
 
-        // 获取博客信息
+        // 获取博客 -- id
         getArticle(aid: any) {
             reqGetArticle(aid).then(res => {
                 this.article = res.data.data.article
-                console.log("获取博客信息", res)
+            }).catch(err => Promise.reject(err))
+        },
+
+        // 删除博客 -- id
+        deletArticle(aid: any) {
+            reqDeleteArticle(aid).then(res => {
+                this.getArticles(1,15)
+                ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
         }
 
