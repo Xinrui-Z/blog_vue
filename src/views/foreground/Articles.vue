@@ -3,35 +3,31 @@
     <el-row>
       <el-col :span="16" :offset="4">
         <div class="articles">
-            <el-row justify="space-evenly" :gutter="60">
-                <el-col :lg="7"  :md="16" v-for="item in 6" :key="item">
-                    <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goDetail">
-                        <img
-                            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" />
-                        <div style="padding: 14px">
-                            <el-tag round>
-                                Java
-                            </el-tag>
-                            <p>Yummy hamburger</p>
-                            <el-button text class="button">Operating</el-button>
-                            <el-divider />
-                            <span>2023/4/2</span>
-                        </div>
-                    </el-card>
-                </el-col>
-            </el-row>
+            <ArticleCardList />
         </div>
       </el-col>
     </el-row>
+    <el-pagination layout="prev, pager, next" 
+        v-model:current-page="page" v-model:page-size="pageSize" :total="articleList.total" 
+        @current-change="handleCurrentChange"
+    />
 </template>
 
 <script lang="ts" setup>
     import router from '@/router'
-    import { ref, reactive } from 'vue'
-    import PageCard from '@/components/PageCard.vue'
+    import { ref, reactive, computed } from 'vue'
+    import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
+    import PageCard from '@/views/foreground/components/PageImgCard.vue'
+    import { useArticleStore } from '@/store/useArticleStore.ts'
 
-    let goDetail = () => {
-        router.push('/articles/detail')
+    let page = ref(1)
+    let pageSize = ref(6)
+
+    let store = useArticleStore()
+    const articleList = computed(() => store.articleList)
+
+    const handleCurrentChange = () => {
+        store.getArticles(page.value, pageSize.value)
     }
 </script>
 
@@ -40,18 +36,9 @@
     .articles {
         margin: 36px;
     }
-    .articles img {
-        width: 100%;
-        height: 260px;
-    }
 
-    .articles-title {
-        margin-bottom: 20px;
-        font: large bolder Helvetica;
-    }
-
-    .el-card {
-        border-radius: 10px;
-        margin: 26px auto;
+    .el-pagination {
+        margin-top: 20px;
+        justify-content: center;
     }
 </style>

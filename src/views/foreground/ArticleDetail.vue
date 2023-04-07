@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang='ts'>
-    import PageCard from '@/components/PageCard.vue'
+    import PageCard from '@/views/foreground/components/PageImgCard.vue'
 </script>
 
 <style scoped>

@@ -1,14 +1,14 @@
-import {request} from '@/api/http'
+import { request } from '@/api/http'
 import { User, Article } from '@/types/type'
 import axios from 'axios'
- 
+
 // 登录
 export function reqPostLogin(data: User) {
-    return request({
-        url: '/admin/login',
-        data,
-        method:'post'
-      })
+  return request({
+    url: '/admin/login',
+    data,
+    method: 'post'
+  })
 }
 
 // 获取用户信息 -- id
@@ -56,17 +56,17 @@ export function reqGetArticles(page: number, pageSize: number) {
 // 修改博客
 export function reqPutArticle(data: Article) {
   return request({
-    url: `/article/article`,
+    url: '/article/article',
     data,
-    method: 'post'
+    method: 'post',
   })
 }
 
 // 获取博客 -- 根据id
-export function reqGetArticle(aid: long) {
+export function reqGetArticleById(aid: long) {
   return request({
     url: `/article/article/${aid}`,
-    method: 'get'
+    method: 'get',
   })
 }
 
@@ -82,6 +82,14 @@ export function reqDeleteArticle(aid: long) {
 export function reqGetUserInfo() {
   return request({
     url: '/front/user',
+    method: 'get'
+  })
+}
+
+// 获取标签
+export function reqGetLabelsAndCount() {
+  return request({
+    url: '/front/labels',
     method: 'get'
   })
 }

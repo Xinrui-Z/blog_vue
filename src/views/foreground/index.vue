@@ -2,7 +2,7 @@
     <el-row>
         <el-col :span="24">
             <div class="info-card">
-                <img src="@/assets/images/indexbackground.jpg" class="info-card-avatar"/>
+                <img src="@/assets/images/indexbackground.jpg" class="info-card-avatar" />
                 <p class="info-card-nickname">{{user.nickName}}</p>
                 <p class="info-card-sign">{{user.sign}}</p>
             </div>
@@ -17,36 +17,23 @@
             </div>
             <div class="tags">
                 <p class="item-title">Tags</p>
-                <el-badge :value="12" class="tags-item" v-for="(item, index) in 6" :key="index"
+                <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                     :type="tagType[index%4]">
-                    <el-button>Leetcode</el-button>
+                    <el-button>{{item.label}}</el-button>
                 </el-badge>
             </div>
             <div class="articles">
                 <p class="item-title">Recent Articles</p>
-                <el-row justify="space-evenly" :gutter="50">
-                    <el-col :lg="7" :md="16" v-for="article in articles" :key="article.id">
-                        <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                            <img :src="article.imgUrl" />
-                            <div style="padding: 14px">
-                                <el-tag round>
-                                    {{article.label}}
-                                </el-tag>
-                                <p>{{article.title}}</p>
-                                <p>{{article.digest}}</p>
-                                <el-divider />
-                                <span>{{article.updateTime}}</span>
-                            </div>
-                        </el-card>
-                    </el-col>
-                </el-row>
+                <ArticleCardList />
                 <el-button round class="article-btn" @click="goArticles">Know More</el-button>
             </div>
+ 
         </el-col>
     </el-row>
 </template>
 
 <script lang="ts" setup>
+    import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
     import { ref, reactive, computed } from 'vue'
     import { StarFilled, Message } from '@element-plus/icons-vue'
     import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
@@ -56,10 +43,12 @@
 
     let userStore = useUserInfoStore()
     let articleStore = useArticleStore()
+
     userStore.getUserInfo()
-    articleStore.getArticles(1,6)
+    articleStore. getLabelsAndCount()
+
     const user = computed(() => userStore.user)
-    const articles = computed(() => articleStore.articleList)
+    const labels = computed(() => articleStore.labelList)
 
     const tagType = reactive(['success', 'info', 'warning', 'danger'])
 
@@ -79,14 +68,17 @@
         align-items: center;
         background-repeat: repeat-x;
     }
+
     .info-card-avatar {
         width: 280px;
         height: 280px;
         border-radius: 50%;
     }
+
     .info-card-nickname {
         font: 2em x-large;
     }
+
     .info-card-sign {
         font: large bolder;
         font-family: serif;
@@ -113,27 +105,26 @@
 
     /* articles */
     .articles {
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: column;
-        -webkit-justify-content: center;
-        justify-content: center;
         align-items: center;
     }
+
     .articles img {
         width: 100%;
         height: 260px;
+        background-size: contain;
     }
 
     .el-card {
+        width: 100%;
         border-radius: 10px;
         margin: 26px auto;
     }
 
     .article-btn {
+        display: block;
+        margin: 10px auto;
         color: #F2E6CE;
         background-color: #6E8B74;
-        margin: 10px 0;
     }
 
     .article-btn:hover {

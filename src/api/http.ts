@@ -7,14 +7,14 @@ export  const request =(options:any)=> {
     axios.defaults.baseURL = '/api'
     
     const service = axios.create({
-      timeout: 10000
+      timeout: 20000
     })
  
     // 请求拦截器
     service.interceptors.request.use(
       (config:any) => {
         let token:string|null = sessionStorage.getItem('TOKEN')
-        if (token) config.headers['token'] = token         
+        if (token) config.headers['token'] = token        
         return config
       },
       error => {
