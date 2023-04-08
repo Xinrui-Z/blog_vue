@@ -7,8 +7,8 @@ import { ElMessage} from "element-plus"
 export const useUserInfoStore = defineStore('userInfo', {
     state: () => {
         return {
-            admin: {},
-            user: {}
+            admin: {} as User,
+            user: {} as User
         }
     },
     actions: {
@@ -32,7 +32,6 @@ export const useUserInfoStore = defineStore('userInfo', {
 
         // 修改基本信息
         postBasicInfo(data: User) {
-            console.log('基本信息',data)
             reqPostBasicInfo(data).then(res => {
                 ElMessage.success(res.data.message)
                 this.getAdminInfo()

@@ -1,9 +1,10 @@
 <template>
-    <!-- <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="background-image" /> -->
-    <h1 style="text-align: center;">Leave Your Message Here!</h1>
-    <el-row>
+    <div class="background-div">
+        <h1 class="animate__animated animate__fadeInDownBig" style="font-size:36px">留个言吧！</h1>
+    </div>
+    <el-row >
         <el-col :span="24">
-            <el-input v-model="message.content" placeholder="在此处写下你想说的话吧" size="large" clearable>
+            <el-input v-model="message.content" placeholder="leave your message here..." size="large" clearable>
                 <template #append>
                     <el-button :icon="EditPen" @Click="sendMessage" />
                 </template>
@@ -14,7 +15,8 @@
         <el-col :span="24">
             <el-scrollbar height="600px">
                 <el-timeline>
-                    <el-timeline-item :timestamp="item.insertTime" placement="top" v-for="item in messageList" :id="item.id">
+                    <el-timeline-item :timestamp="item.insertTime" placement="top" v-for="item in messageList"
+                        :id="item.id">
                         <el-card>
                             <h4>{{item.content}}</h4>
                         </el-card>
@@ -53,6 +55,11 @@
         .el-row {
             max-width: 100%;
         }
+
+        .el-input {
+            width: 85%;
+            margin: 26px 66px;
+        }
     }
 
     /* PC */
@@ -61,10 +68,26 @@
             left: 15%;
             max-width: 70%;
         }
+
+        .el-input {
+            width: 94%;
+            margin: 26px 66px;
+        }
     }
 
-    .el-input {
-        width: 94%;
-        margin: 26px 66px;
+    .background-div {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        width: 100%;
+        color: white;
+  
+        background: url("https://images.unsplash.com/photo-1490365728022-deae76380607?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80");
+    }
+
+    .el-row {
+        margin-top: 30px;
     }
 </style>

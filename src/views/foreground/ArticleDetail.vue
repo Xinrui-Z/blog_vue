@@ -1,7 +1,7 @@
 <template>
   <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="background-image" />
   <el-row>
-    <el-col :span="14" :offset="5">
+    <el-col :span="14" :offset="5" class="animate__animated animate__backInDown">
       <p class="article-title">{{article.title}}</p>
       <p style="text-align: center;">
         <el-icon style="margin-right: 5px">
@@ -25,7 +25,7 @@
   let aid = ref('')
 
   aid.value = router.currentRoute.value.query.id
-  articleStore.getArticle(aid.value)
+  articleStore.getArticleById(aid.value)
   const article = computed(() => articleStore.article)
 
 </script>
@@ -33,7 +33,8 @@
 <style scoped>
   .background-image {
     width: 100%;
-    height: 460px;
+    height: 500px;
+    border-radius: 10px;
     object-fit: cover;
   }
 

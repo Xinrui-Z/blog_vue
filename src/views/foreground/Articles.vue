@@ -1,5 +1,5 @@
 <template>
-    <p class="page-description">Articles</p>
+    <p class="page-description animate__animated animate__backInDown">Articles</p>
     <el-row>
         <el-col :span="16" :offset="4">
             <div class="articles">

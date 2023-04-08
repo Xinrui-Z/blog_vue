@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { reqPostArticle, reqGetArticles, reqPutArticle, reqPutArticleImg, reqGetArticleById, reqDeleteArticle, reqGetLabelsAndCount } from "@/api/index.ts"
+import { reqPostArticle, reqGetArticles, reqPutArticle, reqPutArticleImg, reqGetArticleById, reqGetArticleByLabel, reqDeleteArticle, reqGetLabelsAndCount } from "@/api/index.ts"
 import { Article } from '@/types/type'
 import router from '@/router'
 import { ElMessage } from "element-plus"
@@ -7,8 +7,9 @@ import { ElMessage } from "element-plus"
 export const useArticleStore = defineStore('article', {
     state: () => {
         return {
-            article: {},
+            article: {} as Article,
             articleList: [],
+            articles: [], // about me
             labelList: []
         }
     },
@@ -36,7 +37,7 @@ export const useArticleStore = defineStore('article', {
         },
 
         // 获取博客 -- id
-        getArticle(aid: any) {
+        getArticleById(aid: any) {
             reqGetArticleById(aid).then(res => {
                 console.log(res.data.data.article)
                 this.article = res.data.data.article
@@ -56,7 +57,14 @@ export const useArticleStore = defineStore('article', {
             reqGetLabelsAndCount().then(res => {
                 this.labelList = res.data.data.labels
             })
-        }
+        },
+
+        // 获取博客 -- label
+        getArticleByLabel(label: string) {
+            reqGetArticleByLabel(label).then(res => {
+                this.articles = res.data.data.articles
+            }).catch(err => Promise.reject(err))
+        },
 
     }
 })

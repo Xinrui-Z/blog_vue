@@ -70,6 +70,14 @@ export function reqGetArticleById(aid: long) {
   })
 }
 
+// 获取博客 -- 根据label
+export function reqGetArticleByLabel(label: string) {
+  return request({
+    url: `/front/about/${label}`,
+    method: 'get',
+  })
+}
+
 // 删除博客 -- 根据id
 export function reqDeleteArticle(aid: long) {
   return request({

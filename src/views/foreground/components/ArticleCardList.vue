@@ -4,7 +4,7 @@
             <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
                 <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img"/>
                 <div style="padding: 14px">
-                    <el-tag>
+                    <el-tag color="#f7f4ed">
                         {{article.label}}
                     </el-tag>
                     <p class="article-title">{{article.title}}</p>
@@ -29,7 +29,6 @@
     const articles = computed(() => articleStore.articleList.articles)
     
     const goArticleDetail = (aid: String) => {
-        console.log('hhhhhhh')
         router.push({
             path: '/articles/detail',
             query: {
@@ -64,6 +63,9 @@
         font: 13px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
     }
 
+    .el-tag {
+        color: #584717;
+    }
     .el-card {
         width: 100%;
         border-radius: 10px;

@@ -1,4 +1,5 @@
 <template>
+    <Weather />
     <el-row>
         <el-col :span="24">
             <div class="info-card">
@@ -13,7 +14,8 @@
             <div class="connect">
                 <p class="item-title">Connect</p>
                 <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
-                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email: {{user.email}}</el-link>
+                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
+                    {{user.email}}</el-link>
             </div>
             <div class="tags">
                 <p class="item-title">Tags</p>
@@ -29,13 +31,14 @@
                     Know More
                 </el-button>
             </div>
- 
+
         </el-col>
     </el-row>
 </template>
 
 <script lang="ts" setup>
     import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
+    import Weather from '@/components/Weather.vue'
     import { ref, reactive, computed } from 'vue'
     import { StarFilled, Message } from '@element-plus/icons-vue'
     import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
@@ -47,17 +50,19 @@
     let articleStore = useArticleStore()
 
     userStore.getUserInfo()
-    articleStore. getLabelsAndCount()
+    articleStore.getLabelsAndCount()
 
     const user = computed(() => userStore.user)
     const labels = computed(() => articleStore.labelList)
 
     const tagType = reactive(['success', 'info', 'warning', 'danger'])
 
+
     let goArticles = () => {
         router.push("/articles")
     }
 </script>
+
 
 <style scoped>
     /* info */
@@ -114,5 +119,4 @@
         display: block;
         margin: 10px auto;
     }
-
 </style>
