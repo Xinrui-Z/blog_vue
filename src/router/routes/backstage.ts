@@ -22,12 +22,12 @@ export default [
                 component: () => import('@/views/backstage/BlogManagement.vue'),
                 children:[
                     {
-                        name: 'bloglist',
+                        name: 'list',
                         path: '',
                         component: () => import('@/views/backstage/BlogManagement/BlogList.vue')
                     },
                     {
-                        name: 'blogedit',
+                        name: 'edit',
                         path: 'edit',
                         component: () => import('@/views/backstage/BlogManagement/BlogEdit.vue')
                     }

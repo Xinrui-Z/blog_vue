@@ -2,7 +2,7 @@
     <el-row>
         <el-col :span="24">
             <div class="info-card">
-                <img src="@/assets/images/indexbackground.jpg" class="info-card-avatar" />
+                <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="info-card-avatar" />
                 <p class="info-card-nickname">{{user.nickName}}</p>
                 <p class="info-card-sign">{{user.sign}}</p>
             </div>
@@ -12,8 +12,8 @@
         <el-col :span="16" :offset="4">
             <div class="connect">
                 <p class="item-title">Connect</p>
-                <el-link :icon="StarFilled" type="primary" class="connect-link">Github: {{user.github}}</el-link>
-                <el-link :icon="Message" type="info" class="connect-link">Email: {{user.email}}</el-link>
+                <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
+                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email: {{user.email}}</el-link>
             </div>
             <div class="tags">
                 <p class="item-title">Tags</p>
@@ -25,7 +25,9 @@
             <div class="articles">
                 <p class="item-title">Recent Articles</p>
                 <ArticleCardList />
-                <el-button round class="article-btn" @click="goArticles">Know More</el-button>
+                <el-button round color="#b6bfaa" class="article-btn" @click="goArticles">
+                    Know More
+                </el-button>
             </div>
  
         </el-col>
@@ -108,27 +110,9 @@
         align-items: center;
     }
 
-    .articles img {
-        width: 100%;
-        height: 260px;
-        background-size: contain;
-    }
-
-    .el-card {
-        width: 100%;
-        border-radius: 10px;
-        margin: 26px auto;
-    }
-
     .article-btn {
         display: block;
         margin: 10px auto;
-        color: #F2E6CE;
-        background-color: #6E8B74;
     }
 
-    .article-btn:hover {
-        color: #6E8B74;
-        background-color: #F2E6CE;
-    }
 </style>

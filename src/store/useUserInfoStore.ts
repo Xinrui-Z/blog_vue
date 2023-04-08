@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { reqPostLogin, reqGetAdminInfo, reqPostInfo, reqPutPwd, reqGetUserInfo } from "@/api/index.ts"
+import { reqPostLogin, reqGetAdminInfo, reqPostBasicInfo, reqPutPwd, reqGetUserInfo } from "@/api/index.ts"
 import { User } from "@/types/type"
 import router from '@/router'
 import { ElMessage} from "element-plus"
@@ -31,8 +31,9 @@ export const useUserInfoStore = defineStore('userInfo', {
         },
 
         // 修改基本信息
-        postInfo(data: User) {
-            reqPostInfo(data).then(res => {
+        postBasicInfo(data: User) {
+            console.log('基本信息',data)
+            reqPostBasicInfo(data).then(res => {
                 ElMessage.success(res.data.message)
                 this.getAdminInfo()
             }).catch(err => Promise.reject(err))

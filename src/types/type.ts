@@ -10,13 +10,20 @@ export interface User {
 }
 
 export interface Article {
-  articleLabel?: string
-  articleTitle?: string
-  articleImg?: string
-  articleAbstract: string
-  articleContent?: string
+  id?: string
+  label?: string
+  title?: string
+  imgUrl?: string
+  digest: string
+  content?: string
   insertTime?: string
   updateTime?: string
 }
 
+export interface Message {
+  id?: string
+  content?: string
+  insertTime?: string
+  updateTime?: string
+}
 

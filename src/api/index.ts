@@ -1,5 +1,5 @@
 import { request } from '@/api/http'
-import { User, Article } from '@/types/type'
+import { User, Article, Message } from '@/types/type'
 import axios from 'axios'
 
 // 登录
@@ -20,7 +20,7 @@ export function reqGetAdminInfo() {
 }
 
 // 修改基本信息
-export function reqPostInfo(data: User) {
+export function reqPostBasicInfo(data: User) {
   return request({
     url: `/admin/info`,
     data,
@@ -65,7 +65,7 @@ export function reqPutArticle(data: Article) {
 // 获取博客 -- 根据id
 export function reqGetArticleById(aid: long) {
   return request({
-    url: `/article/article/${aid}`,
+    url: `/front/article/${aid}`,
     method: 'get',
   })
 }
@@ -91,5 +91,22 @@ export function reqGetLabelsAndCount() {
   return request({
     url: '/front/labels',
     method: 'get'
+  })
+}
+
+// 获取留言
+export function reqGetMessages() {
+  return request({
+    url: '/front/messages',
+    method: 'get'
+  })
+}
+
+// 添加留言
+export function reqPostMessage(data: Message) {
+  return request({
+    url: '/front/message',
+    data,
+    method: 'post'
   })
 }

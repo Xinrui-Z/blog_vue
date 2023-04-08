@@ -30,7 +30,6 @@ export const useArticleStore = defineStore('article', {
 
         // 修改博客
         putArticle(data: Article) {
-            console.log("修改博客", data)
             reqPutArticle(data).then(res => {
                 ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
@@ -38,14 +37,14 @@ export const useArticleStore = defineStore('article', {
 
         // 获取博客 -- id
         getArticle(aid: any) {
-            console.log(aid)
             reqGetArticleById(aid).then(res => {
+                console.log(res.data.data.article)
                 this.article = res.data.data.article
             }).catch(err => Promise.reject(err))
         },
 
         // 删除博客 -- id
-        deletArticle(aid: any) {
+        deletArticle(aid: string) {
             reqDeleteArticle(aid).then(res => {
                 this.getArticles(1, 15)
                 ElMessage.success(res.data.message)
@@ -55,7 +54,6 @@ export const useArticleStore = defineStore('article', {
         // 获取标签
         getLabelsAndCount() {
             reqGetLabelsAndCount().then(res => {
-                console.log(res)
                 this.labelList = res.data.data.labels
             })
         }

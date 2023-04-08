@@ -42,6 +42,7 @@
     }
   
     .page-footer {
+      margin: 20px;
       text-align: center;
     }
   </style>

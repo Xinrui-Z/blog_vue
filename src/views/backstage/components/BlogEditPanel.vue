@@ -1,6 +1,6 @@
 <template>
     <div class="editor-div">
-        <v-md-editor height="400px" @save="handleSave" :model-value="article.content" />
+        <v-md-editor height="400px" @save="handleSave" v-model="article.content" autofocus="true" />
         <el-form label-width="100px" style="max-width: 460px" label-position="left">
             <el-form-item label="标签">
                 <el-input v-model="article.label" />
@@ -9,16 +9,7 @@
                 <el-input type="textarea" v-model="article.title" />
             </el-form-item>
             <el-form-item label="封面">
-                <el-upload list-type="picture-card" ref="elupload" class="avatar-uploader"
-                    :on-preview="handlePictureCardPreview" :http-request="httpRequest" :on-remove="handleRemove"
-                    action="#">
-                    <el-icon>
-                        <Plus />
-                    </el-icon>
-                </el-upload>
-                <el-dialog v-model="dialogVisible">
-                    <img w-full :src="dialogImageUrl" alt="Preview Image" />
-                </el-dialog>
+                <ImageUpload :imageUrl="article.imgUrl" @Upload="getUploadData"/>
             </el-form-item>
             <el-form-item label="摘要">
                 <el-input type="textarea" v-model="article.digest" />
@@ -29,6 +20,7 @@
 
 <script setup lang='ts'>
     import BlogEditPanel from '@/views/backstage/component/BlogEditPanel.vue'
+    import ImageUpload from '@/views/backstage/components/ImageUpload.vue'
     import { ref, reactive, toRaw, watch } from 'vue'
     import { Article } from '@/types/type'
     import { ElInput, ElMessage } from 'element-plus'
@@ -46,10 +38,13 @@
     const disabled = ref(false)
     const articleId = ref('')
 
-    let imageUrl = ref()
+    const fileList = ref < UploadUserFile[] > ([
+
+    ])
+
     let fileBase64 = ""
 
-    let article = ref <Article> ({
+    let article = ref < Article > ({
         label: '',
         labelCount: 1,
         title: '',
@@ -67,11 +62,19 @@
     watch(() => store.article, () => {
         let articleObj = toRaw(store.article)
         article.value = articleObj
+        fileList.value.push({
+            url: "data:image/jpeg;base64," + articleObj.imgUrl
+        })
     })
+
+    // get upload data 
+    let getUploadData = (uploadImgUrl: string) => {
+        toRaw(article.value).imgUrl = uploadImgUrl
+    }
 
     // picture remove
     const handleRemove: UploadProps['onRemove'] = (file: UploadFile) => {
-        imageUrl.value = ''
+        article.imgUrl = ''
     }
 
     // picture preview
@@ -97,17 +100,17 @@
         if (!isPFX) {
             ElMessage.error("上传头像图片只能是 JPG、PNG、JPEG 格式!");
         } else if (!isLt2M) {
-           ElMessage.error("上传文件大小不能超过 2MB!");
+            ElMessage.error("上传文件大小不能超过 2MB!");
         } else {
             getBase64(data.file).then(resBase64 => {
                 fileBase64 = resBase64.split(',')[1]
                 toRaw(article.value).imgUrl = fileBase64
             })
-            
+
         }
     }
 
-    
+
 </script>
 
 <style scoped>

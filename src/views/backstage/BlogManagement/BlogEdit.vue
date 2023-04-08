@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang='ts'>
-    import BlogEditPanel from '@/views/backstage/component/BlogEditPanel.vue'
+    import BlogEditPanel from '@/views/backstage/components/BlogEditPanel.vue'
 </script>
 
 <style scoped>

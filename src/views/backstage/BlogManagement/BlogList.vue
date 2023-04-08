@@ -5,7 +5,7 @@
         <el-table-column prop="title" label="Title" />
         <el-table-column prop="label" label="Label" width="150">
             <template #default="scope">
-                <el-tag>{{scope.row.label}}</el-tag>
+                <el-tag type="success" effect="dark">{{scope.row.label}}</el-tag>
             </template>
         </el-table-column>
         <el-table-column label="Operations" width="180">
@@ -29,7 +29,7 @@
     import router from '@/router'
 
     let page = ref(1)
-    let pageSize = ref(15)
+    let pageSize = ref(10)
 
     const store = useArticleStore()
     store.getArticles(page.value, pageSize.value)
@@ -42,7 +42,6 @@
                 id: row.id
             }
         })
-        console.log(index, row)
     }
 
     const handleDelete = (index: number, row: Article) => {
