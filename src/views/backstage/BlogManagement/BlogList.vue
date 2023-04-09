@@ -24,8 +24,8 @@
 <script setup lang='ts'>
     import { ref, reactive, toRaw, computed } from 'vue'
     import { Article } from '@/types/type'
-    import { useArticleStore } from '@/store/useArticleStore.ts'
-    import BlogEditPanel from '@/views/backstage/component/BlogEditPanel.vue'
+    import { useArticleStore } from '@/store/useArticleStore'
+    import BlogEditPanel from '@/views/backstage/components/BlogEditPanel.vue'
     import router from '@/router'
 
     let page = ref(1)

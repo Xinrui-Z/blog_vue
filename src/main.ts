@@ -6,7 +6,7 @@ import 'element-plus/dist/index.css'
 // pinia
 import { createPinia } from 'pinia'
 // vue-router
-import router from './router'
+import router from '@/router'
 // 引入富文本
 import VueMarkdownEditor from '@kangc/v-md-editor'
 import '@kangc/v-md-editor/lib/style/base-editor.css'

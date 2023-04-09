@@ -27,4 +27,19 @@ const router = createRouter({
     ]
 })
 
+router.beforeEach((to, from, next) => {
+    if (!to.meta.role) {
+        next()
+        return
+    }
+
+    if (to.meta.role && sessionStorage.getItem('TOKEN')!=null) {
+        next()
+        return
+    } else {
+        sessionStorage.clear()
+        router.push('/')
+    }
+})
+
 export default router

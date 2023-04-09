@@ -55,7 +55,7 @@
 
     //if update 
     if (router.currentRoute.value.query.id != undefined) {
-        store.getArticle(router.currentRoute.value.query.id)
+        store.getArticleById(router.currentRoute.value.query.id)
         articleId.value = router.currentRoute.value.query.id
     }
 

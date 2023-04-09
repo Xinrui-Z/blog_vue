@@ -1,14 +1,14 @@
 <template>
   <el-container>
     <el-header>
-      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="handleSelect" active-text-color="white"
+      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @select="handleSelect" active-text-color="white"
         background-color="#6f7c65" text-color="#d7d8ac">
         <el-menu-item index="1">Xinrui's Blog</el-menu-item>
         <div class="flex-grow" />
-        <el-menu-item index="index">Home</el-menu-item>
-        <el-menu-item index="articles">Articles</el-menu-item>
-        <el-menu-item index="about">About</el-menu-item>
-        <el-menu-item index="message">Message Board</el-menu-item>
+        <el-menu-item index="index">主页</el-menu-item>
+        <el-menu-item index="articles">博客</el-menu-item>
+        <el-menu-item index="about">关于我</el-menu-item>
+        <el-menu-item index="message">留言</el-menu-item>
       </el-menu>
     </el-header>
     <el-main>

@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import { ref, reactive, toRefs, onMounted } from "vue"
     window.WIDGET = {
         "CONFIG": {

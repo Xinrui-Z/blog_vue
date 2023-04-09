@@ -1,4 +1,4 @@
-export function getBase64(file) {
+export function getBase64(file: any) {
     return new Promise((resolve, reject) => {
       let reader = new FileReader();
       let fileResult = "";

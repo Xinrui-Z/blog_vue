@@ -2,7 +2,7 @@
     <div class="login-div">
         <div class="input-div">
             <h2>WELCOME</h2>
-            <el-form :model="form" size="large">
+            <el-form size="large">
                 <el-form-item label="username:">
                     <el-input v-model="user.number" clearable/>
                 </el-form-item>
@@ -18,7 +18,7 @@
 <script setup lang='ts'>
     import { Calendar, Search } from '@element-plus/icons-vue'
     import { ref } from 'vue'
-    import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
+    import { useUserInfoStore } from '@/store/useUserInfoStore'
     import { User } from '@/types/type'
 
     let store = useUserInfoStore()

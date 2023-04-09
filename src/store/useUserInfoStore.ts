@@ -7,8 +7,8 @@ import { ElMessage} from "element-plus"
 export const useUserInfoStore = defineStore('userInfo', {
     state: () => {
         return {
-            admin: {} as User,
-            user: {} as User
+            admin: {} ,
+            user: {} 
         }
     },
     actions: {

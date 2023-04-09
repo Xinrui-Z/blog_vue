@@ -22,7 +22,7 @@
 
 <script setup lang='ts'>
     import { ref, computed } from 'vue'
-    import { useArticleStore } from '@/store/useArticleStore.ts'
+    import { useArticleStore } from '@/store/useArticleStore'
     import { Clock } from '@element-plus/icons-vue'
     import router from '@/router'
 
@@ -50,7 +50,7 @@
         display: -webkit-flex;
         justify-content: center;
         align-items: center;
-        height: 500px;
+        height: 460px;
         width: 100%;
         color: white;
         border-radius: 10px;

@@ -39,7 +39,6 @@ export const useArticleStore = defineStore('article', {
         // 获取博客 -- id
         getArticleById(aid: any) {
             reqGetArticleById(aid).then(res => {
-                console.log(res.data.data.article)
                 this.article = res.data.data.article
             }).catch(err => Promise.reject(err))
         },

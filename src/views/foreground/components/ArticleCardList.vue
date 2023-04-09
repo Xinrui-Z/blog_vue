@@ -1,9 +1,9 @@
 <template>
     <el-row justify="space-evenly" :gutter="50">
-        <el-col :lg="7" :md="12" v-for="article in articles" :key="article.id">
+        <el-col :lg="8" :md="12" v-for="article in articles" :key="article.id">
             <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
                 <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img"/>
-                <div style="padding: 14px">
+                <div style="padding: 10px; height: 200px;">
                     <el-tag color="#f7f4ed">
                         {{article.label}}
                     </el-tag>
@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
     import { computed } from 'vue'
-    import { useArticleStore } from '@/store/useArticleStore.ts'
+    import { useArticleStore } from '@/store/useArticleStore'
     import router from '@/router'
 
     let articleStore = useArticleStore()
@@ -47,7 +47,7 @@
 
     .article-img {
         width: 100%;
-        height: 260px;
+        height: 200px;
         background-size: cover;
     }
 
@@ -56,11 +56,11 @@
     }
 
     .article-digest {
-        font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+        font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
     }
 
     .article-time {
-        font: 13px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+        font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
     }
 
     .el-tag {

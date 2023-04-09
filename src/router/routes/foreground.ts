@@ -4,12 +4,12 @@ export default [
     {
         name: 'index',
         path: '',
-        component: () => import('@/views/foreground/index.vue'),
+        component: () => import('@/views/foreground/index.vue')
     },
     {
         name: 'articles',
         path: '/articles',
-        component: () => import('@/views/foreground/Articles.vue'),
+        component: () => import('@/views/foreground/Articles.vue')
     },
     {
         name: 'detail',
@@ -19,7 +19,7 @@ export default [
     {
         name: 'about',
         path: '/about',
-        component: () => import('@/views/foreground/About.vue'),
+        component: () => import('@/views/foreground/About.vue')
     },
     {
         name: 'message',

@@ -1,7 +1,5 @@
 <template>
-    <div class="background-div">
-        <h1 class="animate__animated animate__fadeInDownBig" style="font-size:36px">留个言吧！</h1>
-    </div>
+    <img src="https://images.unsplash.com/photo-1672243775711-999ac69cb555?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" >
     <el-row >
         <el-col :span="24">
             <el-input v-model="message.content" placeholder="leave your message here..." size="large" clearable>
@@ -30,7 +28,7 @@
 <script setup lang='ts'>
     import { ref, computed, toRaw } from 'vue'
     import { EditPen } from '@element-plus/icons-vue'
-    import { useMessageStore } from '@/store/useMessageStore.ts'
+    import { useMessageStore } from '@/store/useMessageStore'
     import { Message } from '@/types/type'
 
     let messageStore = useMessageStore()
@@ -53,11 +51,11 @@
     /* Phone */
     @media screen and (max-width: 993px) {
         .el-row {
-            max-width: 100%;
+            max-width: 90%;
         }
 
         .el-input {
-            width: 85%;
+            width: 84%;
             margin: 26px 66px;
         }
     }
@@ -75,16 +73,11 @@
         }
     }
 
-    .background-div {
-        display: flex;
-        display: -webkit-flex;
-        justify-content: center;
-        align-items: center;
-        height: 500px;
+    img {
         width: 100%;
-        color: white;
-  
-        background: url("https://images.unsplash.com/photo-1490365728022-deae76380607?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80");
+        height: 460px;
+        object-fit: cover;
+        border-radius: 10px;
     }
 
     .el-row {

@@ -3,6 +3,8 @@ export interface User {
   number?: string
   password?: string
   nickName?: string
+  email?: string
+  github?: string
   avatarUrl?: string
   sign?: string
   insertTime?: string

@@ -3,7 +3,7 @@
     <el-button color="#5d7430" plain @click="saveBasicInfo">Save</el-button>
     <ImageUpload :imageUrl="admin.avatarUrl" @Upload="getUploadData" />
     <div class="info-card">
-        <el-form :model="user" size="large">
+        <el-form :model="admin" size="large">
             <el-form-item label="Nick：">
                 <el-input v-model="admin.nickName" clearable />
             </el-form-item>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
+    import { useUserInfoStore } from '@/store/useUserInfoStore'
     import { ref, computed, watch, toRaw } from 'vue'
     import { User } from '@/types/type'
     import { ElMessage } from "element-plus"
@@ -56,7 +56,9 @@
     let isDisabled = ref(true)
 
     let getUploadData = (uploadImgUrl: string) => {
-        toRaw(admin.value).avatarUrl = uploadImgUrl
+        if(uploadImgUrl != '') {
+            toRaw(admin.value).avatarUrl = uploadImgUrl
+        } 
     }
 
     let handleReset = () => {

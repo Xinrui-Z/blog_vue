@@ -1,7 +1,7 @@
 <template>
   <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="background-image" />
   <el-row>
-    <el-col :span="14" :offset="5" class="animate__animated animate__backInDown">
+    <el-col :span="24" class="animate__animated animate__backInDown">
       <p class="article-title">{{article.title}}</p>
       <p style="text-align: center;">
         <el-icon style="margin-right: 5px">
@@ -17,7 +17,7 @@
 <script setup lang='ts'>
   import { useRouter } from 'vue-router'
   import { ref, computed } from 'vue'
-  import { useArticleStore } from '@/store/useArticleStore.ts'
+  import { useArticleStore } from '@/store/useArticleStore'
   import { Clock } from '@element-plus/icons-vue'
 
   const articleStore = useArticleStore()
@@ -31,9 +31,24 @@
 </script>
 
 <style scoped>
+  /* Phone */
+  @media screen and (max-width: 993px) {
+    .el-row {
+      max-width: 100%;
+    }
+  }
+
+  /* PC */
+  @media screen and (min-width: 992px) {
+    .el-row {
+      left: 15%;
+      max-width: 70%;
+    }
+  }
+
   .background-image {
     width: 100%;
-    height: 500px;
+    height: 460px;
     border-radius: 10px;
     object-fit: cover;
   }

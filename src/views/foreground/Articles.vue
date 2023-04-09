@@ -15,7 +15,7 @@
     import router from '@/router'
     import { ref, reactive, computed } from 'vue'
     import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
-    import { useArticleStore } from '@/store/useArticleStore.ts'
+    import { useArticleStore } from '@/store/useArticleStore'
 
     let page = ref(1)
     let pageSize = ref(6)

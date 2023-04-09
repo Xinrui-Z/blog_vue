@@ -41,8 +41,8 @@
     import Weather from '@/components/Weather.vue'
     import { ref, reactive, computed } from 'vue'
     import { StarFilled, Message } from '@element-plus/icons-vue'
-    import { useUserInfoStore } from '@/store/useUserInfoStore.ts'
-    import { useArticleStore } from '@/store/useArticleStore.ts'
+    import { useUserInfoStore } from '@/store/useUserInfoStore'
+    import { useArticleStore } from '@/store/useArticleStore'
     import { User } from '@/types/type'
     import router from '@/router'
 
@@ -67,6 +67,7 @@
 <style scoped>
     /* info */
     .info-card {
+        margin: 30px;
         display: -webkit-flex;
         display: flex;
         flex-direction: column;
@@ -77,9 +78,10 @@
     }
 
     .info-card-avatar {
-        width: 280px;
-        height: 280px;
+        width: 260px;
+        height: 260px;
         border-radius: 50%;
+        object-fit: cover;
     }
 
     .info-card-nickname {
