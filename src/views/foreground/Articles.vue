@@ -1,7 +1,7 @@
 <template>
     <p class="page-description animate__animated animate__backInDown">Articles</p>
-    <el-row>
-        <el-col :span="16" :offset="4">
+    <el-row  justify="center">
+        <el-col :xs="20" :sm="20" :md="20" :lg="16" >
             <div class="articles">
                 <ArticleCardList />
             </div>

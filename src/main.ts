@@ -10,13 +10,22 @@ import router from '@/router'
 // 引入富文本
 import VueMarkdownEditor from '@kangc/v-md-editor'
 import '@kangc/v-md-editor/lib/style/base-editor.css'
-import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js'
-import '@kangc/v-md-editor/lib/theme/style/vuepress.css'
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
 
-import Prism from 'prismjs';
+// highlightjs 核心代码
+import hljs from 'highlight.js/lib/core';
+// 按需引入语言包
+import javascript from 'highlight.js/lib/languages/javascript'
+import java from 'highlight.js/lib/languages/java'
+import c from 'highlight.js/lib/languages/c'
 
-VueMarkdownEditor.use(vuepressTheme, {
-  Prism,
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('java', java);
+hljs.registerLanguage('c', c);
+
+VueMarkdownEditor.use(githubTheme, {
+  Hljs: hljs,
 });
 
 const app = createApp(App)

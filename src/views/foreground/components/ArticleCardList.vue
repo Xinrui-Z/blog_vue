@@ -1,5 +1,5 @@
 <template>
-    <el-row justify="space-evenly" :gutter="50">
+    <el-row justify="space-evenly" :gutter="60">
         <el-col :lg="8" :md="12" v-for="article in articles" :key="article.id">
             <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
                 <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img"/>

@@ -3,7 +3,7 @@
         <h1 class="animate__animated animate__fadeInDownBig" style="font-size:36px">About me</h1>
     </div>
     <el-row justify="space-evenly">
-        <el-col :lg="6" :md="12" v-for="article in articles" :key="article.id">
+        <el-col :xs="20" :lg="6" :md="12" v-for="article in articles" :key="article.id" :gutter="50">
             <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
                 <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img" />
                 <div style="padding: 14px">
@@ -45,12 +45,25 @@
 </script>
 
 <style scoped>
+    /* Phone */
+    @media screen and (max-width: 993px) {
+        .background-div {
+            height: 300px;
+        }
+    }
+
+    /* PC */
+    @media screen and (min-width: 992px) {
+        .background-div {
+            height: 460px;
+        }
+    }
+
     .background-div {
         display: flex;
         display: -webkit-flex;
         justify-content: center;
         align-items: center;
-        height: 460px;
         width: 100%;
         color: white;
         border-radius: 10px;
@@ -58,7 +71,7 @@
     }
 
     .el-row {
-        margin: 50px 0;
+        margin: 60px 0;
     }
 
     /* articles */
@@ -78,6 +91,12 @@
 
     .article-time {
         font: 13px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    }
+
+    .el-card {
+        width: 100%;
+        border-radius: 10px;
+        margin: 26px auto;
     }
 
     .el-tag {

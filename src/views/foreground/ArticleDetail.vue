@@ -6,7 +6,7 @@
       <p style="text-align: center;">
         <el-icon style="margin-right: 5px">
           <Clock />
-        </el-icon>更新于：{{article.insertTime}}
+        </el-icon>更新于：{{article.updateTime}}
       </p>
       <p class="article-digest">{{article.digest}}</p>
       <v-md-editor :model-value="article.content" mode="preview"></v-md-editor>
@@ -36,6 +36,9 @@
     .el-row {
       max-width: 100%;
     }
+    img {
+            height: 300px;
+        }
   }
 
   /* PC */
@@ -44,13 +47,20 @@
       left: 15%;
       max-width: 70%;
     }
+
+    img {
+            height: 460px;
+        }
   }
 
   .background-image {
     width: 100%;
-    height: 460px;
     border-radius: 10px;
     object-fit: cover;
+  }
+
+  .el-row {
+    margin-top: 30px;
   }
 
   p {

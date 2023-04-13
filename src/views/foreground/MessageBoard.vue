@@ -1,6 +1,7 @@
 <template>
-    <img src="https://images.unsplash.com/photo-1672243775711-999ac69cb555?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" >
-    <el-row >
+    <img
+        src="https://images.unsplash.com/photo-1672243775711-999ac69cb555?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
+    <el-row>
         <el-col :span="24">
             <el-input v-model="message.content" placeholder="leave your message here..." size="large" clearable>
                 <template #append>
@@ -58,6 +59,10 @@
             width: 84%;
             margin: 26px 66px;
         }
+
+        img {
+            height: 300px;
+        }
     }
 
     /* PC */
@@ -71,11 +76,14 @@
             width: 94%;
             margin: 26px 66px;
         }
+
+        img {
+            height: 460px;
+        }
     }
 
     img {
         width: 100%;
-        height: 460px;
         object-fit: cover;
         border-radius: 10px;
     }
