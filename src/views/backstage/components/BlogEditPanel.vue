@@ -89,7 +89,7 @@
         if (router.currentRoute.value.query.id != undefined) {
             store.putArticle(toRaw(article.value))
         } else {
-            store.addArticle(toRaw(article.value))
+            store.postArticle(toRaw(article.value))
         }
     }
 

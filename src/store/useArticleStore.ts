@@ -15,7 +15,7 @@ export const useArticleStore = defineStore('article', {
     },
     actions: {
         // 添加博客
-        addArticle(data: Article) {
+        postArticle(data: Article) {
             reqPostArticle(data).then(res => {
                 this.getArticles(1, 15)
                 ElMessage.success(res.data.message)

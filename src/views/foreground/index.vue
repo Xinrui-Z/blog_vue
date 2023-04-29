@@ -78,8 +78,8 @@
     }
 
     .info-card-avatar {
-        width: 260px;
-        height: 260px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
         object-fit: cover;
     }
