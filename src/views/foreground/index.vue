@@ -67,7 +67,7 @@
 <style scoped>
     /* info */
     .info-card {
-        margin: 30px;
+        margin: 20px;
         display: -webkit-flex;
         display: flex;
         flex-direction: column;
@@ -78,8 +78,8 @@
     }
 
     .info-card-avatar {
-        width: 200px;
-        height: 200px;
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
         object-fit: cover;
     }

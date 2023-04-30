@@ -1,6 +1,7 @@
 <template>
     <div class="login-div">
-        <div class="input-div">
+        <el-row  class="row-bg" justify="center">
+          <el-col :xs="23" :sm="23" :md="18" :lg="8" :xl="8">
             <h2>WELCOME</h2>
             <el-form size="large">
                 <el-form-item label="username:">
@@ -11,7 +12,8 @@
                 </el-form-item>
             </el-form>
             <el-button @click="goLogin">login</el-button>
-        </div>
+          </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -40,13 +42,9 @@
         background-size: 100% 100%;
     }
 
-    .input-div {
+    .el-row {
         text-align: center;
-        width: 28%;
-        position: absolute;
-        padding: 10px 16px;
-        left: 36%;
-        top: 33%;
+        top: 32%;
     }
 
     .el-button {
