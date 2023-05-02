@@ -1,17 +1,19 @@
 <template>
-    <el-row justify="space-evenly" :gutter="60">
-        <el-col :lg="8" :md="12" v-for="article in articles" :key="article.id">
-            <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
-                <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img"/>
-                <div style="padding: 10px; height: 200px;">
-                    <el-tag color="#f7f4ed">
-                        {{article.label}}
-                    </el-tag>
-                    <p class="article-title">{{article.title}}</p>
-                    <p class="article-digest">{{article.digest}}</p>
-                    <el-divider />
-                    <span class="article-time">{{article.updateTime}}</span>
-                </div>
+    <el-row>
+        <el-col :span="24" v-for="article in articles" :key="article.id">
+            <el-card class="box-card" @click="goArticleDetail(article.id)">
+                <template #header>
+                    <div class="card-header">
+                        <span>{{article.title}}</span>
+                        <el-tag color="#f7f4ed">
+                            {{article.label}}
+                        </el-tag>
+                    </div>
+                </template>
+                <v-md-editor height="130px" class="article-content" :model-value="article.content"
+                    mode="preview"></v-md-editor>
+                <el-divider />
+                <span class="article-time">{{article.updateTime}}</span>
             </el-card>
         </el-col>
     </el-row>
@@ -27,7 +29,7 @@
     articleStore.getArticles(1, 6)
 
     const articles = computed(() => articleStore.articleList.articles)
-    
+
     const goArticleDetail = (aid: String) => {
         router.push({
             path: '/articles/detail',
@@ -55,17 +57,22 @@
         font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     }
 
-    .article-digest {
-        font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    .article-content {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
     }
 
     .article-time {
-        font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+        font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
     }
 
     .el-tag {
         color: #584717;
     }
+
     .el-card {
         width: 100%;
         border-radius: 10px;

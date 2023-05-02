@@ -1,7 +1,7 @@
 <template>
     <!-- <Weather /> -->
     <div class="background-div">
-        <h1 style="font-size:60px">Xinrui's Blog</h1>
+        <h1 style="font-size:60px">{{user.nickName}}'s Blog</h1>
     </div>
     <!-- <el-row>
         <el-col :span="24">
@@ -12,9 +12,10 @@
             </div>
         </el-col>
     </el-row> -->
-    <el-row justify="center">
-        <el-col :xs="20" :sm="20" :md="20" :lg="16">
-            <div class="connect">
+    <el-row justify="center" :gutter="50">
+        <!-- <el-col > -->
+        <el-col :xs="22" :sm="20" :md="18" :lg="10">
+            <!-- <div class="connect">
                 <p class="item-title">Connect</p>
                 <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
                 <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
@@ -26,7 +27,7 @@
                     :type="tagType[index%4]">
                     <el-button>{{item.label}}</el-button>
                 </el-badge>
-            </div>
+            </div> -->
             <div class="articles">
                 <p class="item-title">Recent Articles</p>
                 <ArticleCardList />
@@ -35,6 +36,26 @@
                 </el-button>
             </div>
 
+        </el-col>
+        <el-col :xs="22" :sm="20" :md="20" :lg="4">
+            <div class="about">
+                <p class="item-title">ABOUT</p>
+                <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="about-avatar" />
+                <p class="about-sign">{{user.sign}}</p>
+            </div>
+            <div class="connect">
+                <p class="item-title">CONNECT</p>
+                <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
+                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
+                    {{user.email}}</el-link>
+            </div>
+            <div class="tags">
+                <p class="item-title">TAGS</p>
+                <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
+                    :type="tagType[index%4]">
+                    <el-button>{{item.label}}</el-button>
+                </el-badge>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -95,7 +116,7 @@
     }
 
     /* info */
-    .info-card {
+    /* .info-card {
         margin: 20px;
         display: -webkit-flex;
         display: flex;
@@ -104,20 +125,24 @@
         justify-content: center;
         align-items: center;
         background-repeat: repeat-x;
+    } */
+    .about {
+        margin-top: 90px;
     }
 
-    .info-card-avatar {
-        width: 240px;
-        height: 240px;
-        border-radius: 50%;
+    .about-avatar {
+        width: 100%;
+        height: 80%;
+        border-radius: 8px;
         object-fit: cover;
     }
 
-    .info-card-nickname {
+    .about-nickname {
         font: 2em x-large;
     }
 
-    .info-card-sign {
+    .about-sign {
+        margin-left: 10px;
         font: large bolder;
         font-family: serif;
     }
@@ -129,7 +154,7 @@
 
     /* connect */
     .connect-link {
-        margin: 10px 30px;
+        margin: 10px ;
     }
 
     /* tags */
@@ -138,7 +163,7 @@
     }
 
     .tags-item {
-        margin: 20px;
+        margin: 10px;
     }
 
     /* articles */
