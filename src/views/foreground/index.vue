@@ -1,6 +1,9 @@
 <template>
-    <Weather />
-    <el-row>
+    <!-- <Weather /> -->
+    <div class="background-div">
+        <h1 style="font-size:60px">Xinrui's Blog</h1>
+    </div>
+    <!-- <el-row>
         <el-col :span="24">
             <div class="info-card">
                 <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="info-card-avatar" />
@@ -8,9 +11,9 @@
                 <p class="info-card-sign">{{user.sign}}</p>
             </div>
         </el-col>
-    </el-row>
-    <el-row  justify="center">
-        <el-col :xs="20" :sm="20" :md="20" :lg="16" >
+    </el-row> -->
+    <el-row justify="center">
+        <el-col :xs="20" :sm="20" :md="20" :lg="16">
             <div class="connect">
                 <p class="item-title">Connect</p>
                 <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
@@ -65,6 +68,32 @@
 
 
 <style scoped>
+    /* Phone */
+    @media screen and (max-width: 993px) {
+        .background-div {
+            height: 300px;
+        }
+    }
+
+    /* PC */
+    @media screen and (min-width: 992px) {
+        .background-div {
+            height: 460px;
+        }
+    }
+
+    .background-div {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: white;
+        margin-bottom: 40px;
+        /* border-radius: 10px; */
+        background: url("https://images.unsplash.com/photo-1527406099874-4bfdfe4d7431?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+    }
+
     /* info */
     .info-card {
         margin: 20px;

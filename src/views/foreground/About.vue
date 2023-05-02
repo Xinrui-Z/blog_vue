@@ -33,7 +33,6 @@
     const articles = computed(() => articleStore.articles)
 
     const goArticleDetail = (aid: String) => {
-        console.log('hhhhhhh')
         router.push({
             path: '/articles/detail',
             query: {
