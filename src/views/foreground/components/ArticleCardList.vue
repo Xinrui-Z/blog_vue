@@ -4,7 +4,7 @@
             <el-card class="box-card" @click="goArticleDetail(article.id)">
                 <template #header>
                     <div class="card-header">
-                        <span>{{article.title}}</span>
+                        <h4 class="card-header-title">{{article.title}}</h4>
                         <el-tag color="#f7f4ed">
                             {{article.label}}
                         </el-tag>
@@ -69,6 +69,11 @@
         font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
     }
 
+    .card-header-title {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
     .el-tag {
         color: #584717;
     }
@@ -77,17 +82,5 @@
         width: 100%;
         border-radius: 10px;
         margin: 26px auto;
-    }
-
-    .article-btn {
-        display: block;
-        margin: 10px auto;
-        color: #F2E6CE;
-        background-color: #6E8B74;
-    }
-
-    .article-btn:hover {
-        color: #6E8B74;
-        background-color: #F2E6CE;
     }
 </style>

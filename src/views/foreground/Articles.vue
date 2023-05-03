@@ -1,7 +1,6 @@
 <template>
-    <p class="page-description animate__animated animate__backInDown">Articles</p>
     <el-row  justify="center">
-        <el-col :xs="20" :sm="20" :md="20" :lg="16" >
+        <el-col :xs="22" :sm="20" :md="20" :lg="12" >
             <div class="articles">
                 <ArticleCardList />
             </div>
@@ -32,6 +31,10 @@
     .page-description {
         text-align: center;
         font: 36px/1 Tahoma, Helvetica, Arial, ”\5b8b\4f53”, sans-serif;
+    }
+
+    .el-row {
+        margin-top: 50px;
     }
 
     /* articles */

@@ -1,21 +1,30 @@
 <template>
     <div class="background-div">
-        <h1 class="animate__animated animate__fadeInDownBig" style="font-size:36px">About me</h1>
     </div>
     <el-row justify="space-evenly">
-        <el-col :xs="20" :lg="6" :md="12" v-for="article in articles" :key="article.id" :gutter="50">
-            <el-card :body-style="{ padding: '0px' }" shadow="hover" @click="goArticleDetail(article.id)">
-                <img :src="'data:image/jpeg;base64,'+article.imgUrl" class="article-img" />
-                <div style="padding: 14px">
-                    <el-tag color="#f7f4ed">
-                        {{article.label}}
-                    </el-tag>
-                    <p class="article-title">{{article.title}}</p>
-                    <p class="article-digest">{{article.digest}}</p>
-                    <el-divider />
-                    <span class="article-time">{{article.updateTime}}</span>
-                </div>
-            </el-card>
+        <el-col :xs="22" :sm="20" :md="20" :lg="3">
+            <div class="about">
+                <h3 class="item-title">{{user.nickName}}</h3>
+                <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="about-avatar" />
+                <p class="about-sign">{{user.sign}}</p>
+            </div>
+            <div class="connect">
+                <h3 class="item-title">CONNECT</h3>
+                <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
+                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
+                    {{user.email}}</el-link>
+            </div>
+        </el-col>
+
+        <el-col :xs="22" :md="12" :lg="12" v-for="article in articles" :key="article.id">
+            <div>
+                <p style="text-align: center; margin: 20px;">
+                    <el-icon style="margin-right: 5px">
+                        <Clock />
+                    </el-icon>更新于：{{article.updateTime}}
+                </p>
+                <v-md-editor :model-value="article.content" mode="preview" style="background-color: #f9f9f9;"></v-md-editor>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -23,14 +32,22 @@
 <script setup lang='ts'>
     import { ref, computed } from 'vue'
     import { useArticleStore } from '@/store/useArticleStore'
+    import { StarFilled, Message } from '@element-plus/icons-vue'
     import { Clock } from '@element-plus/icons-vue'
+    import { useUserInfoStore } from '@/store/useUserInfoStore'
     import router from '@/router'
 
     const articleStore = useArticleStore()
-    let label = ref('myself')
+    const userStore = useUserInfoStore()
 
-    articleStore.getArticleByLabel(label.value)
+    const user = computed(() => userStore.user)
     const articles = computed(() => articleStore.articles)
+    const label = ref('myself')
+
+
+    userStore.getUserInfo()
+    articleStore.getArticleByLabel(label.value)
+
 
     const goArticleDetail = (aid: String) => {
         router.push({
@@ -58,6 +75,10 @@
         }
     }
 
+    h1,h2,h3,h4,h5,h6 {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    }
+
     .background-div {
         display: flex;
         display: -webkit-flex;
@@ -66,39 +87,38 @@
         width: 100%;
         color: white;
         border-radius: 10px;
-        background: url("https://images.unsplash.com/photo-1440964829947-ca3277bd37f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        background-image: url("https://images.unsplash.com/photo-1630150187735-03d76dd8faad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2475&q=80");
     }
 
     .el-row {
         margin: 60px 0;
     }
 
-    /* articles */
-    .article-img {
-        width: 100%;
-        height: 260px;
-        background-size: cover;
+
+    .about-avatar {
+        width: 180px;
+        height: 140px;
+        border-radius: 8px;
+        object-fit: cover;
     }
 
-    .article-title {
-        font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    .about-sign {
+        margin-left: 10px;
+        font: large bolder;
+        color: gray;
     }
 
-    .article-digest {
-        font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    .item-title {
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
-    .article-time {
-        font: 13px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    /* connect */
+    .connect-link {
+        margin: 10px;
     }
 
-    .el-card {
-        width: 100%;
-        border-radius: 10px;
-        margin: 26px auto;
-    }
-
-    .el-tag {
-        color: #584717;
-    }
 </style>

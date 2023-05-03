@@ -1,56 +1,33 @@
 <template>
     <!-- <Weather /> -->
     <div class="background-div">
-        <h1 style="font-size:60px">{{user.nickName}}'s Blog</h1>
+        <h1 style="font-size:60px;">Xinrui's Blog</h1>
     </div>
-    <!-- <el-row>
-        <el-col :span="24">
-            <div class="info-card">
-                <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="info-card-avatar" />
-                <p class="info-card-nickname">{{user.nickName}}</p>
-                <p class="info-card-sign">{{user.sign}}</p>
-            </div>
-        </el-col>
-    </el-row> -->
-    <el-row justify="center" :gutter="50">
-        <!-- <el-col > -->
-        <el-col :xs="22" :sm="20" :md="18" :lg="10">
-            <!-- <div class="connect">
-                <p class="item-title">Connect</p>
-                <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
-                <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
-                    {{user.email}}</el-link>
-            </div>
-            <div class="tags">
-                <p class="item-title">Tags</p>
-                <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
-                    :type="tagType[index%4]">
-                    <el-button>{{item.label}}</el-button>
-                </el-badge>
-            </div> -->
+    <el-row justify="space-evenly">
+        <el-col :xs="22" :sm="20" :md="18" :lg="12">
             <div class="articles">
-                <p class="item-title">Recent Articles</p>
+                <h2 class="item-title">Recent Articles</h2>
                 <ArticleCardList />
-                <el-button round color="#b6bfaa" class="article-btn" @click="goArticles">
-                    Know More
-                </el-button>
+                <el-icon class="article-more" @click="goArticles">
+                    <More />
+                </el-icon>
             </div>
 
         </el-col>
-        <el-col :xs="22" :sm="20" :md="20" :lg="4">
-            <div class="about">
-                <p class="item-title">ABOUT</p>
+        <el-col :xs="22" :sm="20" :md="20" :lg="3">
+            <div class="about hidden-xs-only">
+                <h5 class="item-title">ABOUT</h5>
                 <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="about-avatar" />
                 <p class="about-sign">{{user.sign}}</p>
             </div>
             <div class="connect">
-                <p class="item-title">CONNECT</p>
+                <h5 class="item-title">CONNECT</h5>
                 <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
                 <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
                     {{user.email}}</el-link>
             </div>
             <div class="tags">
-                <p class="item-title">TAGS</p>
+                <h5 class="item-title">TAGS</h5>
                 <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                     :type="tagType[index%4]">
                     <el-button>{{item.label}}</el-button>
@@ -64,7 +41,7 @@
     import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
     import Weather from '@/components/Weather.vue'
     import { ref, reactive, computed } from 'vue'
-    import { StarFilled, Message } from '@element-plus/icons-vue'
+    import { StarFilled, Message, More } from '@element-plus/icons-vue'
     import { useUserInfoStore } from '@/store/useUserInfoStore'
     import { useArticleStore } from '@/store/useArticleStore'
     import { User } from '@/types/type'
@@ -103,29 +80,23 @@
         }
     }
 
+    h1,h2,h3,h4,h5,h6 {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    }
+
     .background-div {
         display: flex;
         display: -webkit-flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
         color: white;
         margin-bottom: 40px;
-        /* border-radius: 10px; */
-        background: url("https://images.unsplash.com/photo-1527406099874-4bfdfe4d7431?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        background-image: url("https://images.unsplash.com/photo-1585662659173-fa3eba687ea1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
     }
 
-    /* info */
-    /* .info-card {
-        margin: 20px;
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: column;
-        -webkit-justify-content: center;
-        justify-content: center;
-        align-items: center;
-        background-repeat: repeat-x;
-    } */
     .about {
         margin-top: 90px;
     }
@@ -144,17 +115,16 @@
     .about-sign {
         margin-left: 10px;
         font: large bolder;
-        font-family: serif;
     }
 
     .item-title {
+        margin-top: 30px;
         margin-bottom: 20px;
-        font: large bolder Helvetica;
     }
 
     /* connect */
     .connect-link {
-        margin: 10px ;
+        margin: 10px;
     }
 
     /* tags */
@@ -171,7 +141,7 @@
         align-items: center;
     }
 
-    .article-btn {
+    .article-more {
         display: block;
         margin: 10px auto;
     }

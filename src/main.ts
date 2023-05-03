@@ -3,6 +3,7 @@ import App from './App.vue'
 // Element-UI
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/display.css'
 // pinia
 import { createPinia } from 'pinia'
 // vue-router

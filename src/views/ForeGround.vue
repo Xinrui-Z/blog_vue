@@ -1,21 +1,41 @@
 <template>
   <el-container>
     <el-header>
-      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @select="handleSelect" active-text-color="white"
-        background-color="#6f7c65" text-color="#d7d8ac">
-        <el-menu-item index="1">Xinrui's Blog</el-menu-item>
+      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @select="handleSelect" active-text-color="gray"
+        background-color="#f9f9f9" text-color="black">
+        <el-menu-item index="1">
+          <template #title>
+            <h2>Xinrui's Blog</h2>
+          </template>
+        </el-menu-item>
         <div class="flex-grow" />
-        <el-menu-item index="index">主页</el-menu-item>
-        <el-menu-item index="articles">博客</el-menu-item>
-        <el-menu-item index="about">关于我</el-menu-item>
-        <el-menu-item index="message">留言</el-menu-item>
+        <el-menu-item index="index">
+          <template #title>
+            <h4>INDEX</h4>
+          </template>
+        </el-menu-item>
+        <el-menu-item index="articles">
+          <template #title>
+            <h4>BLOGS</h4>
+          </template>
+        </el-menu-item>
+        <el-menu-item index="about">
+          <template #title>
+            <h4>ABOUT</h4>
+          </template>
+        </el-menu-item>
+        <el-menu-item index="message">
+          <template #title>
+            <h4>MESSAGE</h4>
+          </template>
+        </el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
       <router-view></router-view>
     </el-main>
     <el-footer>
-      <p class="page-footer">Xinrui's Blog</p>
+      <p>&copy2023 Xinrui's Blog</p>
     </el-footer>
   </el-container>
 </template>
@@ -35,18 +55,30 @@
 </script>
 
 <style scoped>
-  .el-container {
-    min-height: 100vh;
+  h1,h2,h3,h4,h5,h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   }
+
+  .el-container {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+  }
+
   .el-header {
     padding: 0 0;
   }
 
   .el-main {
-    background: -moz-linear-gradient(top, #FFFEF8 0%, #FCFDFF 100%);
-    background: -webkit-linear-gradient(top, #FFFEF8 0%, #FCFDFF 100%);
-    background: linear-gradient(to bottom, #FFFEF8 0%, #FCFDFF 100%);
     padding: 0;
+  }
+
+  .el-menu {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: 0;
+    z-index: 999; 
   }
 
   .el-menu--horizontal>.el-menu-item {
@@ -54,12 +86,13 @@
     text-decoration: none;
   }
 
+
   .flex-grow {
     flex-grow: 1;
   }
 
-  .page-footer {
-    margin: 20px;
+  .el-footer {
+    margin: 50px;
     text-align: center;
   }
 </style>
