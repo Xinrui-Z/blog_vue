@@ -39,9 +39,24 @@ export function reqPutPwd(pwd: string) {
 // 添加博客
 export function reqPostArticle(data: Article) {
   return request({
-    url: '/article/addarticle',
+    url: `/article/addarticle`,
     data,
-    method: 'post'
+    method: 'post',
+  })
+}
+
+// 上传图片
+export function reqPostArticleImg(data: any) {
+  let options = {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+  return request({
+    url: `/article/addarticleimg`,
+    method: 'post',
+    data,
+    options
   })
 }
 

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { reqPostArticle, reqGetArticles, reqPutArticle, reqPutArticleImg, reqGetArticleById, reqGetArticleByLabel, reqDeleteArticle, reqGetLabelsAndCount } from "@/api/index.ts"
+import { reqPostArticle, reqGetArticles, reqPutArticle, reqPutArticleImg, reqGetArticleById, reqGetArticleByLabel, reqDeleteArticle, reqGetLabelsAndCount, reqPostArticleImg } from "@/api/index.ts"
 import { Article } from '@/types/type'
 import router from '@/router'
 import { ElMessage } from "element-plus"
@@ -20,6 +20,11 @@ export const useArticleStore = defineStore('article', {
                 this.getArticles(1, 15)
                 ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
+        },
+
+        // 图片上传
+        postArticleImg(file: any) {
+            return reqPostArticleImg(file)
         },
 
         // 获取博客列表

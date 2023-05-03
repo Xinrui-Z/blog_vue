@@ -1,6 +1,7 @@
 <template>
     <div class="editor-div">
-        <v-md-editor height="400px" @save="handleSave" v-model="article.content" autofocus="true" />
+        <v-md-editor height="400px" @save="handleSave" v-model="article.content" autofocus="true"
+            @upload-image="handleUploadImage" :disabled-menus="[]" />
         <el-form label-width="100px" style="max-width: 460px" label-position="left">
             <el-form-item label="标签">
                 <el-input v-model="article.label" />
@@ -9,7 +10,7 @@
                 <el-input type="textarea" v-model="article.title" />
             </el-form-item>
             <el-form-item label="封面">
-                <ImageUpload :imageUrl="article.imgUrl" @Upload="getUploadData"/>
+                <ImageUpload :imageUrl="article.imgUrl" @Upload="getUploadData" />
             </el-form-item>
             <el-form-item label="摘要">
                 <el-input type="textarea" v-model="article.digest" />
@@ -41,6 +42,8 @@
     const fileList = ref < UploadUserFile[] > ([
 
     ])
+
+    const filess = ref([])
 
     let fileBase64 = ""
 
@@ -89,18 +92,18 @@
         if (router.currentRoute.value.query.id != undefined) {
             store.putArticle(toRaw(article.value))
         } else {
-            store.postArticle(toRaw(article.value))
+            store.postArticle(toRaw(article.value), toRaw(filess.value))
         }
     }
 
     let httpRequest = (data) => {
-        imageUrl.value = URL.createObjectURL(data.file);
-        const isPFX = data.file.type === 'image/jpeg' || data.file.type === 'image/jpg' || data.file.type === 'image/png';
-        const isLt2M = data.file.size / 1024 / 1024 < 2;
+        imageUrl.value = URL.createObjectURL(data.file)
+        const isPFX = data.file.type === 'image/jpeg' || data.file.type === 'image/jpg' || data.file.type === 'image/png'
+        const isLt2M = data.file.size / 1024 / 1024 < 2
         if (!isPFX) {
-            ElMessage.error("上传头像图片只能是 JPG、PNG、JPEG 格式!");
+            ElMessage.error("上传头像图片只能是 JPG、PNG、JPEG 格式!")
         } else if (!isLt2M) {
-            ElMessage.error("上传文件大小不能超过 2MB!");
+            ElMessage.error("上传文件大小不能超过 2MB!")
         } else {
             getBase64(data.file).then(resBase64 => {
                 fileBase64 = resBase64.split(',')[1]
@@ -109,6 +112,22 @@
 
         }
     }
+
+    let handleUploadImage = (event, insertImage, files) => {
+        const formData = new FormData()
+        files.forEach(item => {
+            formData.append('file', item)
+        })
+        console.log(formData)
+        store.postArticleImg(formData).then(res => {
+            insertImage({
+                url: res.data.message,
+                desc: 'DESC',
+            })
+            ElMessage.success(res.data.message)
+        }).catch(err => Promise.reject(err))
+    }
+
 
 
 </script>
