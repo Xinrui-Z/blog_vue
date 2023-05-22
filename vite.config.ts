@@ -24,14 +24,15 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['vue', 'element-plus', 'pinia', 'vue-demi'],
+      external: ['vue', 'element-plus', 'vue-demi', 'pinia','vue-router'],
       plugins: [
         externalGlobals({
           vue: 'Vue',
           'element-plus': 'ElementPlus',
+          "vue-demi": 'VueDemi',
           pinia: 'Pinia',
           'vue-router': 'VueRouter',
-          "vue-demi": "VueDemi"
+
         }),
       ],
     }
