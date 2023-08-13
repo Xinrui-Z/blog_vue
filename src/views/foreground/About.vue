@@ -99,7 +99,7 @@
 
 
     .about-avatar {
-        width: 180px;
+        width: 140px;
         height: 140px;
         border-radius: 8px;
         object-fit: cover;

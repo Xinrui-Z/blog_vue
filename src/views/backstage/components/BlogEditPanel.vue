@@ -87,14 +87,21 @@
     }
 
     // save
-    const handleSave = (text, html) => {
-        article.content = html
+    const handleSave = async (text, html) => {
+      article.content = html;
+      try {
         if (router.currentRoute.value.query.id != undefined) {
-            store.putArticle(toRaw(article.value))
+          await store.putArticle(toRaw(article.value));
         } else {
-            store.postArticle(toRaw(article.value), toRaw(filess.value))
+          await store.postArticle(toRaw(article.value), toRaw(filess.value));
         }
-    }
+        // 这里可能还需要进行一些操作，比如显示保存成功的消息等
+      } catch (error) {
+        console.error("An error occurred:", error);
+        // 在这里处理错误，比如显示错误消息给用户
+      }
+    };
+
 
     let httpRequest = (data) => {
         imageUrl.value = URL.createObjectURL(data.file)

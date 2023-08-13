@@ -124,7 +124,7 @@
 
     /* connect */
     .connect-link {
-        margin: 10px;
+        margin: 3px;
     }
 
     /* tags */
