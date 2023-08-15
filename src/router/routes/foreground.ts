@@ -30,5 +30,15 @@ export default [
         name: 'message',
         path: '/message',
         component: () => import('@/views/foreground/MessageBoard.vue')
+    },
+    {
+        name: 'tagsPaper',
+        path: '/tagsPaper/:label', // 添加 :label
+        component: () => import('@/views/foreground/tagsPapers.vue')
+    },
+    {
+        name: 'tagsArticle',
+        path: '/tagsArticle/:label', // 添加 :label
+        component: () => import('@/views/foreground/tagsArticles.vue')
     }
 ]

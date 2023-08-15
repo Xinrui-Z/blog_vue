@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="124.70.164.141" id="41f2bdd5-217f-4f6e-94bc-d3d57626a9de" port="22" customName="huawei cloud" nameFormat="CUSTOM" username="root" useOpenSSHConfig="true">
+        <option name="customName" value="huawei cloud" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

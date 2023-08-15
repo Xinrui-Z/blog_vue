@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8fadd351-600a-4bde-a642-a9f859e0c386" name="124.70.164.141/blog" url="http://124.70.164.141">
+        <fileTransfer rootFolder="/blog" accessType="SFTP" host="124.70.164.141" port="22" sshConfigId="41f2bdd5-217f-4f6e-94bc-d3d57626a9de" sshConfig="huawei cloud">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

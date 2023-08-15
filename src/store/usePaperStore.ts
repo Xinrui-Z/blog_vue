@@ -60,11 +60,18 @@ export const usePaperStore = defineStore('paper', {
         },
 
         // 获取文献 -- label
+// 获取文献 -- label
         getPaperByLabel(label: string) {
-            reqGetPaperByLabel(label).then(res => {
-                console.log(res.data.data.papers)
-                this.papers = res.data.data.papers
-            }).catch(err => Promise.reject(err))
+            console.log("Calling getPaperByLabel with label:", label); // 添加这行
+            reqGetPaperByLabel(label)
+                .then(res => {
+                    console.log("Response data:", res.data); // 添加这行
+                    this.papers = res.data.data.papers;
+                })
+                .catch(err => {
+                    console.error("Error in getPaperByLabel:", err); // 添加这行
+                    return Promise.reject(err);
+                });
         },
 
     }

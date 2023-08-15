@@ -38,14 +38,14 @@
                 <h5 class="item-title">TAGS_BLOGS</h5>
                 <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                     :type="tagType[index%4]">
-                    <el-button>{{item.label}}</el-button>
+                  <el-button @click="goToArticlesByLabel(item.label)">{{ item.label }}</el-button>
                 </el-badge>
             </div>
             <div class="tags">
               <h5 class="item-title">TAGS_PAPERS</h5>
               <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
                         :type="tagType[index%4]">
-                <el-button>{{item.label}}</el-button>
+                <el-button @click="goToPapersByLabel(item.label)">{{ item.label }}</el-button>
               </el-badge>
             </div>
         </el-col>
@@ -78,7 +78,6 @@
 
     const tagType = reactive(['success', 'info', 'warning', 'danger'])
 
-
     let goArticles = () => {
         router.push("/articles")
     }
@@ -86,7 +85,19 @@
     let goPapers = () => {
       router.push("/papers")
     }
+
+    // 根据标签获取文献信息
+    const goToPapersByLabel = (label) => {
+      router.push({ name: 'tagsPaper', params: { label } });
+    };
+
+    // 根据标签获取文献信息
+    const goToArticlesByLabel = (label) => {
+      router.push({ name: 'tagsArticle', params: { label } });
+    };
+
 </script>
+
 
 
 <style scoped>
