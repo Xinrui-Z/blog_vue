@@ -22,6 +22,17 @@ export interface Article {
   updateTime?: string
 }
 
+export interface Paper {
+  id?: string
+  label?: string
+  title?: string
+  author?: string
+  content?: string
+  insertTime?: string
+  updateTime?: string
+}
+
+
 export interface Message {
   id?: string
   content?: string

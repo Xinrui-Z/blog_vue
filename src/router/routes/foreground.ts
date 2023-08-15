@@ -12,6 +12,11 @@ export default [
         component: () => import('@/views/foreground/Articles.vue')
     },
     {
+        name: 'papers',
+        path: '/papers',
+        component: () => import('@/views/foreground/Papers.vue')
+    },
+    {
         name: 'detail',
         path: '/articles/detail',
         component: () => import('@/views/foreground/ArticleDetail.vue')

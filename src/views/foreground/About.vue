@@ -36,12 +36,15 @@
     import { Clock } from '@element-plus/icons-vue'
     import { useUserInfoStore } from '@/store/useUserInfoStore'
     import router from '@/router'
+    import {usePaperStore} from "@/store/usePaperStore";
 
     const articleStore = useArticleStore()
+    const paperStore = usePaperStore()
     const userStore = useUserInfoStore()
 
     const user = computed(() => userStore.user)
     const articles = computed(() => articleStore.articles)
+    const papers =computed(()=>paperStore.papers)
     const label = ref('myself')
 
 
@@ -56,6 +59,15 @@
                 id: aid
             }
         })
+    }
+
+    const goPaperDetail = (aid: String) => {
+      router.push({
+        path: '/papers/detail',
+        query: {
+          id: aid
+        }
+      })
     }
 
 </script>
@@ -88,9 +100,10 @@
         color: white;
         border-radius: 10px;
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size: 100% 130%;
         -moz-background-size: 100% 100%;
-        background-image: url("https://images.unsplash.com/photo-1630150187735-03d76dd8faad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2475&q=80");
+        background-image: url(".././../assets/images/about.jpg");
+        position: absolute;
     }
 
     .el-row {

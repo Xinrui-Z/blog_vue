@@ -1,7 +1,7 @@
 <template>
     <!-- <Weather /> -->
     <div class="background-div">
-        <h1 style="font-size:60px;">Xinrui's Blog</h1>
+        <h1 style="font-size:60px;">Live for the moment</h1>
     </div>
     <el-row justify="space-evenly">
         <el-col :xs="22" :sm="20" :md="18" :lg="12">
@@ -11,6 +11,14 @@
                 <el-icon class="article-more" @click="goArticles">
                     <More />
                 </el-icon>
+            </div>
+
+            <div class="papers">
+              <h2 class="item-title">Recent Papers</h2>
+              <PaperCardList/>
+              <el-icon class="paper-more" @click="goPapers">
+                <More />
+              </el-icon>
             </div>
 
         </el-col>
@@ -27,11 +35,18 @@
                     {{user.email}}</el-link>
             </div>
             <div class="tags">
-                <h5 class="item-title">TAGS</h5>
+                <h5 class="item-title">TAGS_BLOGS</h5>
                 <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                     :type="tagType[index%4]">
                     <el-button>{{item.label}}</el-button>
                 </el-badge>
+            </div>
+            <div class="tags">
+              <h5 class="item-title">TAGS_PAPERS</h5>
+              <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
+                        :type="tagType[index%4]">
+                <el-button>{{item.label}}</el-button>
+              </el-badge>
             </div>
         </el-col>
     </el-row>
@@ -46,21 +61,30 @@
     import { useArticleStore } from '@/store/useArticleStore'
     import { User } from '@/types/type'
     import router from '@/router'
+    import PaperCardList from "@/views/foreground/components/PaperCardList.vue";
+    import {usePaperStore} from "@/store/usePaperStore";
 
     let userStore = useUserInfoStore()
     let articleStore = useArticleStore()
+    let paperStore =usePaperStore()
 
     userStore.getUserInfo()
     articleStore.getLabelsAndCount()
+    paperStore.getLabelsAndCount()
 
     const user = computed(() => userStore.user)
     const labels = computed(() => articleStore.labelList)
+    const labelsp = computed(() => paperStore.labelList)
 
     const tagType = reactive(['success', 'info', 'warning', 'danger'])
 
 
     let goArticles = () => {
         router.push("/articles")
+    }
+
+    let goPapers = () => {
+      router.push("/papers")
     }
 </script>
 
@@ -90,11 +114,13 @@
         justify-content: center;
         align-items: center;
         color: white;
+        opacity: 0.9;
         margin-bottom: 40px;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         -moz-background-size: 100% 100%;
-        background-image: url("https://images.unsplash.com/photo-1585662659173-fa3eba687ea1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        background-image: url(.././../assets/images/index.jpg);
+        //position: absolute;
     }
 
     .about {
@@ -144,5 +170,15 @@
     .article-more {
         display: block;
         margin: 10px auto;
+    }
+
+    /* papers */
+    .papers {
+      align-items: center;
+    }
+
+    .paper-more {
+      display: block;
+      margin: 10px auto;
     }
 </style>

@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang='ts'>
-    import BlogEditPanel from '@/views/backstage/component/BlogEditPanel.vue'
+    import BlogEditPanel from '@/views/backstage/components/BlogEditPanel.vue'
     import ImageUpload from '@/views/backstage/components/ImageUpload.vue'
     import { ref, reactive, toRaw, watch } from 'vue'
     import { Article } from '@/types/type'

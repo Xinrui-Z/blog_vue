@@ -45,6 +45,15 @@ export function reqPostArticle(data: Article) {
   })
 }
 
+// 添加文献
+export function reqPostPaper(data: Paper) {
+  return request({
+    url: `/paper/addpaper`,
+    data,
+    method: 'post',
+  })
+}
+
 // 上传图片
 export function reqPostArticleImg(data: any) {
   let options = {
@@ -101,6 +110,49 @@ export function reqDeleteArticle(aid: long) {
   })
 }
 
+
+
+// 获取文献列表
+export function reqGetPapers(page: number, pageSize: number) {
+  return request({
+    url: `/front/papers/${page}/${pageSize}`,
+    method: 'get'
+  })
+}
+
+// 修改博客
+export function reqPutPaper(data: Article) {
+  return request({
+    url: '/paper/paper',
+    data,
+    method: 'post',
+  })
+}
+
+// 获取文献 -- 根据id
+export function reqGetPaperById(aid: long) {
+  return request({
+    url: `/front/paper/${aid}`,
+    method: 'get',
+  })
+}
+
+// 获取文献 -- 根据label
+export function reqGetPaperByLabel(label: string) {
+  return request({
+    url: `/front/about/${label}`,
+    method: 'get',
+  })
+}
+
+// 删除博客 -- 根据id
+export function reqDeletePaper(aid: long) {
+  return request({
+    url: `/article/deletepaper/${aid}`,
+    method: 'delete'
+  })
+}
+
 // 获取用户信息
 export function reqGetUserInfo() {
   return request({
@@ -113,6 +165,14 @@ export function reqGetUserInfo() {
 export function reqGetLabelsAndCount() {
   return request({
     url: '/front/labels',
+    method: 'get'
+  })
+}
+
+// 获取文献标签
+export function reqGetLabelsPaperAndCount() {
+  return request({
+    url: '/front/labelsPaper',
     method: 'get'
   })
 }

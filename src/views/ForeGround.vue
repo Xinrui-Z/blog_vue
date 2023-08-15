@@ -19,6 +19,11 @@
             <h4>BLOGS</h4>
           </template>
         </el-menu-item>
+        <el-menu-item index="papers">
+          <template #title>
+            <h4>PAPERS</h4>
+          </template>
+        </el-menu-item>
         <el-menu-item index="about">
           <template #title>
             <h4>ABOUT</h4>
@@ -35,7 +40,7 @@
       <router-view></router-view>
     </el-main>
     <el-footer>
-      <p>&copy2023 Xinrui's Blog</p>
+      <p>&copy2023 Xinrui. All rights reserved. </p>
     </el-footer>
   </el-container>
 </template>
