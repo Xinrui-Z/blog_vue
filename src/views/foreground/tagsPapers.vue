@@ -11,33 +11,29 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import PaperCardList from '@/views/foreground/components/PaperCardList.vue';
-import { usePaperStore } from '@/store/usePaperStore';
+import { ref, computed, onMounted } from 'vue'
+import router from '@/router'
+import PaperCardList from '@/views/foreground/components/PaperCardList.vue'
+import { usePaperStore } from '@/store/usePaperStore'
+import useRoute from 'vue-router'
 
-const route = useRoute();
-const selectedLabel = route.params.label;
+const page = ref(1)
+const pageSize = ref(6)
+const store = usePaperStore()
+const paperList = computed(() => store.paperList)
+const papers = computed(() => store.papers) // Use the papers from the store
 
-const page = ref(1);
-const pageSize = ref(6);
-
-const { getPaperByLabel, paperList } = usePaperStore();
-const papers = ref([]);
+// Call getPaperByLabel when the component is mounted
+onMounted(() => {
+  const route = useRoute() // Import useRoute from 'vue-router'
+  const label = route.label // Get the label parameter from the route
+  store.getPaperByLabel(label)
+})
 
 const handleCurrentChange = () => {
-  getPaperByLabel(selectedLabel, page.value, pageSize.value)
-      .then((response) => {
-        papers.value = response.data.data.papers;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-};
+  store.getPapers(page.value, pageSize.value)
+}
 
-onMounted(() => {
-  handleCurrentChange();
-});
 </script>
 
 <style scoped>

@@ -10,35 +10,34 @@
                  :total="articleList.total" @current-change="handleCurrentChange" />
 </template>
 
+
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue';
-import { useArticleStore } from '@/store/useArticleStore';
+  import { ref, computed, onMounted} from 'vue'
+  import {useRoute} from 'vue-router'
+  import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
+  import { useArticleStore } from '@/store/useArticleStore'
 
-const route = useRoute();
-const selectedLabel = route.params.label;
+  const page = ref(1)
+  const pageSize = ref(6)
+  const store = useArticleStore()
+  const articleList = computed(() => store.articleList)
+  const articles = computed(() => store.articles) // Use the articles from the store
 
-const page = ref(1);
-const pageSize = ref(6);
+  console.log('tagsArticles mounted');
+  // Call getArticleByLabel when the component is mounted
+  onMounted(() => {
+    const route = useRoute() // Correct usage of useRoute from 'vue-router'
+    const label = route.params.label // Get the label parameter from the route
+    console.log('label:', label)
+    store.getArticleByLabel(label)
+  })
 
-const { getArticleByLabel, articleList } = useArticleStore();
-const articles = ref([]);
+  const handleCurrentChange = () => {
+    store.getArticles(page.value, pageSize.value)
+  }
 
-const handleCurrentChange = () => {
-  getArticleByLabel(selectedLabel, page.value, pageSize.value)
-      .then((response) => {
-        articles.value = response.data.data.articles;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-};
-
-onMounted(() => {
-  handleCurrentChange();
-});
 </script>
+
 
 <style scoped>
 .page-description {

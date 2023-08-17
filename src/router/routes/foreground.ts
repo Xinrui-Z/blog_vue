@@ -22,6 +22,11 @@ export default [
         component: () => import('@/views/foreground/ArticleDetail.vue')
     },
     {
+        name: 'detailPaper',
+        path: '/papers/detail',
+        component: () => import('@/views/foreground/PaperDetail.vue')
+    },
+    {
         name: 'about',
         path: '/about',
         component: () => import('@/views/foreground/About.vue')
@@ -33,12 +38,13 @@ export default [
     },
     {
         name: 'tagsPaper',
-        path: '/tagsPaper/:label', // 添加 :label
+        path: '/tagsPaper/:label', // 动态参数 :label
         component: () => import('@/views/foreground/tagsPapers.vue')
     },
     {
         name: 'tagsArticle',
-        path: '/tagsArticle/:label', // 添加 :label
+        path: '/tagsArticle/:label', // 动态参数 :label
         component: () => import('@/views/foreground/tagsArticles.vue')
     }
+
 ]

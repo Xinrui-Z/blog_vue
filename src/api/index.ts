@@ -1,5 +1,5 @@
 import { request } from '@/api/http'
-import { User, Article, Message } from '@/types/type'
+import { User, Article, Message, Paper } from '@/types/type'
 import axios from 'axios'
 
 // 登录
@@ -97,7 +97,7 @@ export function reqGetArticleById(aid: long) {
 // 获取博客 -- 根据label
 export function reqGetArticleByLabel(label: string) {
   return request({
-    url: `/front/about/${label}`,
+    url: `/tagsArticle/${label}`,
     method: 'get',
   })
 }
@@ -140,7 +140,7 @@ export function reqGetPaperById(aid: long) {
 // 获取文献 -- 根据label
 export function reqGetPaperByLabel(label: string) {
   return request({
-    url: `/front/about/${label}`,
+    url: `/tagsPaper/${label}`,
     method: 'get',
   })
 }
@@ -192,4 +192,6 @@ export function reqPostMessage(data: Message) {
     data,
     method: 'post'
   })
+
+
 }

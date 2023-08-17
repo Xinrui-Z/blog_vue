@@ -15,9 +15,9 @@ export default defineConfig({
     port: 8080,
     proxy: {
       '/api': {
-        // target: 'http://localhost:8855/api',
-        target: 'http://124.70.164.141:8855/api',
-        changeOrigin: true,
+        target: 'http://localhost:8855/api',
+        // target: 'http://124.70.164.141:8855/api',
+        changeOrigin: true, //允许跨域
         rewrite: (path) => path.replace(/^\/api/, '')
       },
     }

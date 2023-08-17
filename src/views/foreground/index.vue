@@ -35,17 +35,19 @@
                     {{user.email}}</el-link>
             </div>
             <div class="tags">
-                <h5 class="item-title">TAGS_BLOGS</h5>
-                <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
-                    :type="tagType[index%4]">
-                  <el-button @click="goToArticlesByLabel(item.label)">{{ item.label }}</el-button>
-                </el-badge>
+              <h5 class="item-title">TAGS_BLOGS</h5>
+              <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
+                        :type="tagType[index % 4]">
+                <!-- 注意这里的@click事件绑定 -->
+                <el-button @click="goTagsArticle(item.label)">{{ item.label }}</el-button>
+              </el-badge>
             </div>
             <div class="tags">
               <h5 class="item-title">TAGS_PAPERS</h5>
               <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
-                        :type="tagType[index%4]">
-                <el-button @click="goToPapersByLabel(item.label)">{{ item.label }}</el-button>
+                        :type="tagType[index % 4]">
+                <!-- 注意这里的@click事件绑定 -->
+                <el-button @click="goTagsPaper(item.label)">{{ item.label }}</el-button>
               </el-badge>
             </div>
         </el-col>
@@ -53,16 +55,18 @@
 </template>
 
 <script lang="ts" setup>
-    import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
-    import Weather from '@/components/Weather.vue'
-    import { ref, reactive, computed } from 'vue'
-    import { StarFilled, Message, More } from '@element-plus/icons-vue'
-    import { useUserInfoStore } from '@/store/useUserInfoStore'
-    import { useArticleStore } from '@/store/useArticleStore'
-    import { User } from '@/types/type'
-    import router from '@/router'
-    import PaperCardList from "@/views/foreground/components/PaperCardList.vue";
-    import {usePaperStore} from "@/store/usePaperStore";
+import { ref, reactive, computed } from 'vue'
+import { StarFilled, Message, More } from '@element-plus/icons-vue'
+import { useUserInfoStore } from '@/store/useUserInfoStore'
+import { useArticleStore } from '@/store/useArticleStore'
+import { usePaperStore } from "@/store/usePaperStore";
+import { reqGetArticlesByLabel } from '@/api/index' // 修改这里的导入
+import { reqGetPaperByLabel } from '@/api/index'; // 导入获取论文的函数
+import router from '@/router'
+import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
+import PaperCardList from "@/views/foreground/components/PaperCardList.vue";
+import axios from 'axios'
+
 
     let userStore = useUserInfoStore()
     let articleStore = useArticleStore()
@@ -86,14 +90,70 @@
       router.push("/papers")
     }
 
-    // 根据标签获取文献信息
-    const goToPapersByLabel = (label) => {
-      router.push({ name: 'tagsPaper', params: { label } });
+
+    // 在发起请求前设置请求头，将令牌添加到请求头中
+    axios.interceptors.request.use(config => {
+      // 从userStore中获取令牌
+      const token = userStore.token;
+
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+
+      return config;
+    }, error => {
+      return Promise.reject(error);
+    });
+
+// 根据标签获取博客信息
+    let goTagsArticle = async (label) => {
+      const  token=localStorage.getItem("token")
+      console.log('goTagsArticle called with label:', label);
+      try {
+        const response = await axios.get(`/api/tagsArticle/${label}`,{
+          headers:{
+            'token':token
+          }
+        });
+        console.log('Response:', response);
+        const articles = response.data.articles;
+
+        // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
+        articleStore.articles = articles;
+        articleStore.getArticleByLabel(label);
+
+        // 在获取数据后进行页面跳转
+        router.push({ name: 'tagsArticle', params: { label: label } });
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
     };
 
-    // 根据标签获取文献信息
-    const goToArticlesByLabel = (label) => {
-      router.push({ name: 'tagsArticle', params: { label } });
+    let goTagsPaper = async (label) => {
+      const token = localStorage.getItem("token")
+      console.log('goTagsPaper called with label:', label);
+      try {
+        const response = await axios.get(`tagsPaper/${label}`,{
+          headers:{
+            'token':token
+          }
+        }).then(response=>{
+          console.log(response.data)
+        });
+        console.log('Response:', response);
+        const papers = response.data.papers;
+
+        // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
+        paperStore.papers = papers;
+
+        // 调用usePaperStore中的getPaperByLabel方法
+        paperStore.getPaperByLabel(label);
+
+        // 在获取数据后进行页面跳转
+        router.push({ name: 'tagsPaper', params: { label: label } });
+      } catch (error) {
+        console.error('Error fetching papers:', error);
+      }
     };
 
 </script>

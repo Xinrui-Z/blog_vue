@@ -23,6 +23,7 @@ import c from 'highlight.js/lib/languages/c'
 import cpp from 'highlight.js/lib/languages/cpp'
 import json from 'highlight.js/lib/languages/json'
 
+
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('c', c)

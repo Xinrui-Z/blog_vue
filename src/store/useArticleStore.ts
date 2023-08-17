@@ -9,7 +9,6 @@ export const useArticleStore = defineStore('article', {
         return {
             article: {} as Article,
             articleList: [],
-            articles: [], // about me
             labelList: []
         }
     },
@@ -66,7 +65,7 @@ export const useArticleStore = defineStore('article', {
         // 获取博客 -- label
         getArticleByLabel(label: string) {
             reqGetArticleByLabel(label).then(res => {
-                this.articles = res.data.data.articles
+                this.articleList = res.data.data.articles
             }).catch(err => Promise.reject(err))
         },
 
