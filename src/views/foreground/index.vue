@@ -5,7 +5,7 @@
   <el-row justify="space-evenly">
     <el-col :xs="22" :sm="20" :md="18" :lg="12">
       <div class="articles">
-        <h2 class="item-title">Recent Articles</h2>
+        <h2 class="item-title">Articles</h2>
         <ArticleCardList />
         <el-icon class="article-more" @click="goArticles">
           <More />
@@ -13,7 +13,7 @@
       </div>
 
       <div class="papers">
-        <h2 class="item-title">Recent Papers</h2>
+        <h2 class="item-title">Reading</h2>
         <PaperCardList/>
         <el-icon class="paper-more" @click="goPapers">
           <More />

@@ -8,6 +8,7 @@
         </el-icon>更新于：{{paper.updateTime}}
       </p>
       <p class="paper-author">作者：{{paper.author}}</p>
+      <p class="paper-author">来源：{{paper.source}}</p>
       <v-md-editor :model-value="paper.content" mode="preview"></v-md-editor>
     </el-col>
   </el-row>

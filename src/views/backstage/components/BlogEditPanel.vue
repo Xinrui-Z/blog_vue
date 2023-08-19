@@ -31,6 +31,7 @@
     import { useRouter } from 'vue-router'
     import { getBase64 } from '@/utils/util.ts'
 
+
     const store = useArticleStore()
     const router = useRouter()
 
@@ -101,7 +102,6 @@
         // 在这里处理错误，比如显示错误消息给用户
       }
     };
-
 
     let httpRequest = (data) => {
         imageUrl.value = URL.createObjectURL(data.file)

@@ -6,20 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3b990ff1-782f-463a-bb55-7050dd11e482" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/index.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/index.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/routes/backstage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes/backstage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/routes/foreground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes/foreground.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/useArticleStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/useArticleStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/usePaperStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/usePaperStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ForeGround.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ForeGround.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/backstage/components/PaperEditPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/components/PaperEditPanel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/About.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/Articles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/Papers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/Papers.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/backstage/components/BlogEditPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/components/BlogEditPanel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/PaperDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/PaperDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,28 +50,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/code/test_blog/vue/src/assets/css",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "E:\\code\\test_blog\\vue\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/code/test_blog/blog_spring&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\code\\test_blog\\vue\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\code\test_blog\vue\src\assets\css" />
@@ -120,7 +108,8 @@
       <workItem from="1692275211024" duration="1395000" />
       <workItem from="1692281335754" duration="5646000" />
       <workItem from="1692319676204" duration="51555000" />
-      <workItem from="1692405832341" duration="27736000" />
+      <workItem from="1692405832341" duration="32738000" />
+      <workItem from="1692447664028" duration="234000" />
     </task>
     <task id="LOCAL-00001" summary="添加文献上传功能">
       <option name="closed" value="true" />
@@ -154,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692413248247</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修复已知bug">
+      <option name="closed" value="true" />
+      <created>1692440593612</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692440593613</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +172,8 @@
     <MESSAGE value="添加文献上传功能" />
     <MESSAGE value="添加标签跳转功能" />
     <MESSAGE value="添加标签导航功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加标签导航功能" />
+    <MESSAGE value="修复已知bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复已知bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
