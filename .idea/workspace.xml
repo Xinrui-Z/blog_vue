@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b990ff1-782f-463a-bb55-7050dd11e482" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/message.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/backstage/components/BlogEditPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/components/BlogEditPanel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/PaperDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/PaperDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/About.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/MessageBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/MessageBoard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,35 +50,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/code/test_blog/blog_spring&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\code\\test_blog\\vue\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/code/test_blog/vue/src/assets/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\code\\test_blog\\vue\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\test_blog\vue\src\assets\images" />
       <recent name="E:\code\test_blog\vue\src\assets\css" />
       <recent name="E:\code\test_blog\vue\src\views\foreground" />
       <recent name="E:\code\test_blog\vue\src\views\foreground\components" />
       <recent name="E:\code\test_blog\vue\src\store" />
-      <recent name="E:\code\test_blog\vue\src\plugins" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\test_blog\vue\src\assets\images" />
@@ -109,7 +109,7 @@
       <workItem from="1692281335754" duration="5646000" />
       <workItem from="1692319676204" duration="51555000" />
       <workItem from="1692405832341" duration="32738000" />
-      <workItem from="1692447664028" duration="234000" />
+      <workItem from="1692447664028" duration="1545000" />
     </task>
     <task id="LOCAL-00001" summary="添加文献上传功能">
       <option name="closed" value="true" />
@@ -151,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692440593613</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="修复已知bug">
+      <option name="closed" value="true" />
+      <created>1692447985127</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692447985127</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

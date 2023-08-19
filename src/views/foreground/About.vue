@@ -90,7 +90,7 @@ h1,h2,h3,h4,h5,h6 {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   -moz-background-size: 100% 100%;
-  background-image: url("../../../src/assets/images");
+  background-image: url("../../assets/images/about.jpg");
 }
 
 .el-row {
