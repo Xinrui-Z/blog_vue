@@ -9,12 +9,17 @@ const service = axios.create({
 
 // 请求拦截器
 service.interceptors.request.use(
+
     (config: any) => {
-        let token: string | null = sessionStorage.getItem('TOKEN')
+        const token = sessionStorage.getItem('TOKEN')
+        // let token: string | null = sessionStorage.getItem('TOKEN')
         if (token) {
+            console.log('Token in request interceptor:', token);
             config.headers['token'] = token
+            console.log('token:',config.headers['token'])
         }
         return config
+
     },
     error => {
         return Promise.reject(error)
@@ -24,22 +29,24 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (response: any) => {
+        console.log('interceptors response data:', response.data); // Add this line
         if (response.data.code === 200) {
-            return response
+            return response;
         } else {
-            return Promise.reject(new Error(response.data.message))
+            return Promise.reject(new Error(response.data.message));
         }
     },
     error => {
-        console.log('err', error)
+        console.log('err', error);
         if (error.response && error.response.status === 400) {
-            ElMessage.error(error.message) // 显示具体错误信息
+            ElMessage.error(error.message);
         } else {
-            ElMessage.error('服务器请求错误，请稍后再试')
+            ElMessage.error('服务器请求错误，请稍后再试');
         }
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
-)
+);
+
 
 export const request = (options: any) => {
     return new Promise((resolve, reject) => {

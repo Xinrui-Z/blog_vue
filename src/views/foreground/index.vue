@@ -39,7 +39,8 @@
               <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                         :type="tagType[index % 4]">
                 <!-- 注意这里的@click事件绑定 -->
-                <el-button @click="goTagsArticle(item.label)">{{ item.label }}</el-button>
+<!--                <el-button @click="goTagsArticle(item.label)">{{ item.label }}</el-button>-->
+                <el-button @click="handleTagArticleClick (item.label)">{{ item.label }}</el-button>
               </el-badge>
             </div>
             <div class="tags">
@@ -47,7 +48,7 @@
               <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
                         :type="tagType[index % 4]">
                 <!-- 注意这里的@click事件绑定 -->
-                <el-button @click="goTagsPaper(item.label)">{{ item.label }}</el-button>
+                <el-button @click="handleTagPaperClick(item.label)">{{ item.label }}</el-button>
               </el-badge>
             </div>
         </el-col>
@@ -60,8 +61,6 @@ import { StarFilled, Message, More } from '@element-plus/icons-vue'
 import { useUserInfoStore } from '@/store/useUserInfoStore'
 import { useArticleStore } from '@/store/useArticleStore'
 import { usePaperStore } from "@/store/usePaperStore";
-import { reqGetArticlesByLabel } from '@/api/index' // 修改这里的导入
-import { reqGetPaperByLabel } from '@/api/index'; // 导入获取论文的函数
 import router from '@/router'
 import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
 import PaperCardList from "@/views/foreground/components/PaperCardList.vue";
@@ -91,70 +90,79 @@ import axios from 'axios'
     }
 
 
-    // 在发起请求前设置请求头，将令牌添加到请求头中
-    axios.interceptors.request.use(config => {
-      // 从userStore中获取令牌
-      const token = userStore.token;
+// 点击标签事件处理程序
+const handleTagArticleClick = (label) => {
+  // 在这里设置正确的 token 到 localStorage
+  localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4Mzc5MzM5NTQwMDcwMDcyMzIwIiwiZXhwIjoxNjkyMzc3NDQwfQ.fFupRP95FZtWd637xEYXQb9w8TfLkyFHwrRgevyFNYw');
 
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+  // 调用获取文章函数
+  goTagsArticle(label);
+};
+
+const handleTagPaperClick = (labelp) => {
+  // 在这里设置正确的 token 到 localStorage
+  localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4Mzc5MzM5NTQwMDcwMDcyMzIwIiwiZXhwIjoxNjkyMzc3NDQwfQ.fFupRP95FZtWd637xEYXQb9w8TfLkyFHwrRgevyFNYw');
+
+  // 调用获取文章函数
+  goTagsPaper(labelp);
+};
+
+let goTagsArticle = async (label) => {
+  const token = localStorage.getItem("token");
+  console.log('Label clicked:', label);
+
+  console.log('goTagsArticle called with label:', label);
+
+  try {
+    const response = await axios.get(`/front/tagsArticle/${label}`, {
+      headers: {
+        'token': token
       }
-
-      return config;
-    }, error => {
-      return Promise.reject(error);
     });
 
-// 根据标签获取博客信息
-    let goTagsArticle = async (label) => {
-      const  token=localStorage.getItem("token")
-      console.log('goTagsArticle called with label:', label);
-      try {
-        const response = await axios.get(`/api/tagsArticle/${label}`,{
-          headers:{
-            'token':token
-          }
-        });
-        console.log('Response:', response);
-        const articles = response.data.articles;
+    console.log('Response:', response);
+    console.log('response.data', response.data);
 
-        // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
-        articleStore.articles = articles;
-        articleStore.getArticleByLabel(label);
+    const articles = response.data.articles;
 
-        // 在获取数据后进行页面跳转
-        router.push({ name: 'tagsArticle', params: { label: label } });
-      } catch (error) {
-        console.error('Error fetching articles:', error);
+    // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
+    articleStore.articleList.articles = articles; // 将特定标签的文章存入 articleStore.articleList.articles
+
+    // 在获取数据后进行页面跳转
+    router.push({ name: 'tagsArticle', params: { label: label } });
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+  }
+};
+
+
+let goTagsPaper = async (labelp) => {
+  const token = localStorage.getItem("token");
+  console.log('Label clicked:', labelp);
+
+  console.log('goTagsPaper called with label:', labelp);
+
+  try {
+    const response = await axios.get(`/front/tagsPaper/${labelp}`, {
+      headers: {
+        'token': token
       }
-    };
+    });
 
-    let goTagsPaper = async (label) => {
-      const token = localStorage.getItem("token")
-      console.log('goTagsPaper called with label:', label);
-      try {
-        const response = await axios.get(`tagsPaper/${label}`,{
-          headers:{
-            'token':token
-          }
-        }).then(response=>{
-          console.log(response.data)
-        });
-        console.log('Response:', response);
-        const papers = response.data.papers;
+    console.log('Response:', response);
+    console.log('response.data', response.data);
 
-        // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
-        paperStore.papers = papers;
+    const papers = response.data.papers;
 
-        // 调用usePaperStore中的getPaperByLabel方法
-        paperStore.getPaperByLabel(label);
+    // 在这里处理后端返回的数据，可以将数据存储到响应式数据中
+    paperStore.paperList.papers = papers; // 将特定标签的文章存入 articleStore.articleList.articles
 
-        // 在获取数据后进行页面跳转
-        router.push({ name: 'tagsPaper', params: { label: label } });
-      } catch (error) {
-        console.error('Error fetching papers:', error);
-      }
-    };
+    // 在获取数据后进行页面跳转
+    router.push({ name: 'tagsPaper', params: { label: labelp } });
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+  }
+};
 
 </script>
 

@@ -2,47 +2,55 @@
   <el-row justify="center">
     <el-col :xs="22" :sm="20" :md="20" :lg="12">
       <div class="articles">
-        <ArticleCardList :articles="articles" />
+        <ArticleCardListTag /> <!-- Use .value here -->
       </div>
     </el-col>
   </el-row>
-  <el-pagination layout="prev, pager, next" v-model:current-page="page" v-model:page-size="pageSize"
-                 :total="articleList.total" @current-change="handleCurrentChange" />
+  <el-pagination
+      layout="prev, pager, next"
+      v-model:current-page="page"
+      v-model:page-size="pageSize"
+      :total="articleStore.articleListTotal" @current-change="handleCurrentChange"/>
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue'
+import ArticleCardListTag from "@/views/foreground/components/ArticleCardListTag.vue"
+import { useArticleStore } from '@/store/useArticleStore'
+import { useRouter } from 'vue-router'
 
-<script lang="ts" setup>
-  import { ref, computed, onMounted} from 'vue'
-  import {useRoute} from 'vue-router'
-  import ArticleCardList from '@/views/foreground/components/ArticleCardList.vue'
-  import { useArticleStore } from '@/store/useArticleStore'
+const page = ref(1)
+const pageSize = ref(6)
+const articleStore = useArticleStore()
+const router = useRouter()
+const isLoaded = ref(false)
 
-  const page = ref(1)
-  const pageSize = ref(6)
-  const store = useArticleStore()
-  const articleList = computed(() => store.articleList)
-  const articles = computed(() => store.articles) // Use the articles from the store
+const handleCurrentChange = (newPage) => {
+  page.value = newPage;
+}
 
-  console.log('tagsArticles mounted');
-  // Call getArticleByLabel when the component is mounted
-  onMounted(() => {
-    const route = useRoute() // Correct usage of useRoute from 'vue-router'
-    const label = route.params.label // Get the label parameter from the route
-    console.log('label:', label)
-    store.getArticleByLabel(label)
-  })
+onMounted(async () => {
+  try {
+    const label = router.currentRoute.value.params.label;
+    console.log("tagsArticles mounted with label:", label);
 
-  const handleCurrentChange = () => {
-    store.getArticles(page.value, pageSize.value)
+    // Call the getArticleByLabel function
+    await articleStore.getArticleByLabel(label);
+
+    // Print the fetched data
+    console.log("Fetched article data:", articleStore.articleList.value);
+
+    isLoaded.value = true;
+  } catch (error) {
+    console.error("Error loading data:", error);
   }
-
+});
 </script>
-
 
 <style scoped>
 .page-description {
   text-align: center;
-  font: 36px/1 Tahoma, Helvetica, Arial, ”\5b8b\4f53”, sans-serif;
+  font: 36px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .el-row {

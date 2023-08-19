@@ -7,7 +7,7 @@
         </el-col>
     </el-row>
     <el-pagination layout="prev, pager, next" v-model:current-page="page" v-model:page-size="pageSize"
-        :total="articleList.total" @current-change="handleCurrentChange" />
+        :total="articleList.total"  />
 </template>
 
 <script lang="ts" setup>

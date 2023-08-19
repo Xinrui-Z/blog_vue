@@ -28,6 +28,8 @@ let paperStore = usePaperStore()
 
 paperStore.getPapers(1, 6)
 
+console.log("get paperList:",paperStore.paperList)
+
 const papers = computed(() => paperStore.paperList.papers)
 
 const goPaperDetail = (aid: String) => {

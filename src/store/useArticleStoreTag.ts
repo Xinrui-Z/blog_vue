@@ -5,7 +5,7 @@ import router from '@/router'
 import { ElMessage } from "element-plus"
 import {nextTick, ref} from 'vue'
 
-export const useArticleStore = defineStore('article', {
+export const useArticleStoreTag = defineStore('article', {
     state: () => {
         return {
             article: {} as Article,
@@ -64,30 +64,20 @@ export const useArticleStore = defineStore('article', {
             })
         },
 
+        // 获取博客 -- label
         async getArticleByLabel(label: string) {
             console.log("getArticleByLabel called with label:", label);
 
             try {
-                console.log("Token in localStorage:", localStorage.getItem("token"));
-                const articleListBackup = this.articleList.value; // 备份 articleList
-
                 const response = await reqGetArticleByLabel(label);
-                console.log("Response:", response);
+                console.log("Response :", response);
+                console.log("Response data:", response.data);
 
-                const responseData = response // 使用 response.data.data 来获取正确的数组
-                console.log("Response data:", responseData);
-
-                console.log("Is array:", Array.isArray(responseData));
-                console.log("Length:", responseData.length);
-
-                // 确保 responseData 是正确的数组
-                if (Array.isArray(responseData)) {
-                    this.articleList.value = responseData; // 更新 articleList 的值
-                    this.articleListTotal = responseData.length; // 更新 articleListTotal
-                    console.log("articleList getArticleByLabel", this.articleList);
+                // 确保 response.data.data.articles 是正确的数组
+                if (Array.isArray(response.data.data.articles)) {
+                    this.articleList = response.data.data.articles;
                 } else {
-                    console.error("Invalid articles data:", responseData);
-                    this.articleList.value = articleListBackup; // 恢复备份的 articleList
+                    console.error("Invalid articles data:", response.data.data.articles);
                 }
 
                 // 将路由跳转放在 nextTick 中

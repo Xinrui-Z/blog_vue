@@ -95,12 +95,39 @@ export function reqGetArticleById(aid: long) {
 }
 
 // 获取博客 -- 根据label
-export function reqGetArticleByLabel(label: string) {
-  return request({
-    url: `/tagsArticle/${label}`,
-    method: 'get',
-  })
+// export async function reqGetArticleByLabel(label: string) {
+//   try {
+//     const response = await request({
+//       url: `/front/tagsArticle/${label}`,
+//       method: 'get',
+//     });
+//
+//     return response;
+//   } catch (error) {
+//     console.error("An error occurred while fetching articles by label:", error);
+//     throw new Error("Failed to fetch articles by label"); // Return a standardized error object
+//   }
+// }
+
+export async function reqGetArticleByLabel(label: string) {
+  try {
+    const token = localStorage.getItem("token");
+    console.log("Token in reqGetArticleByLabel:", token); // Add this line
+    const response = await axios.get(`/front/tagsArticle/${label}`, {
+      headers: {
+        'token': token
+      }
+    });
+    console.log("Response:", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error in reqGetArticleByLabel:", error.message);
+    console.error("Error response:", error.response);
+    throw new Error("Request to get articles by label failed.");
+  }
 }
+
+
 
 // 删除博客 -- 根据id
 export function reqDeleteArticle(aid: long) {
@@ -138,12 +165,24 @@ export function reqGetPaperById(aid: long) {
 }
 
 // 获取文献 -- 根据label
-export function reqGetPaperByLabel(label: string) {
-  return request({
-    url: `/tagsPaper/${label}`,
-    method: 'get',
-  })
+export async function reqGetPaperByLabel(label: string) {
+  try {
+    const token = localStorage.getItem("token");
+    console.log("Token in reqGetPaperByLabel:", token); // Add this line
+    const response = await axios.get(`/front/tagsPaper/${label}`, {
+      headers: {
+        'token': token
+      }
+    });
+    console.log("Response:", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error in reqGetPaperByLabel:", error.message);
+    console.error("Error response:", error.response);
+    throw new Error("Request to get papers by label failed.");
+  }
 }
+
 
 // 删除博客 -- 根据id
 export function reqDeletePaper(aid: long) {

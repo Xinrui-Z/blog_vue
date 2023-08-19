@@ -4,26 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b990ff1-782f-463a-bb55-7050dd11e482" name="Changes" comment="添加标签跳转功能">
+    <list default="true" id="3b990ff1-782f-463a-bb55-7050dd11e482" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/useArticleStoreTag.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/usePaperStoreTag.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardListTag.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/foreground/components/PaperCardListTag.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/http.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/routes/foreground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes/foreground.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/useArticleStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/useArticleStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/usePaperStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/usePaperStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ForeGround.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ForeGround.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/Articles.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/components/PaperCardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/components/PaperCardList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/tagsArticles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/tagsArticles.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/tagsPapers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/tagsPapers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,24 +76,27 @@
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/code/test_blog/blog_spring",
+    "last_opened_file_path": "E:/code/test_blog/vue/src/views/foreground/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "E:\\code\\test_blog\\vue\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\test_blog\vue\src\views\foreground\components" />
+      <recent name="E:\code\test_blog\vue\src\store" />
+      <recent name="E:\code\test_blog\vue\src\plugins" />
       <recent name="E:\code\test_blog\vue\src\views\foreground" />
       <recent name="E:\code\test_blog\vue\src\assets\images" />
-      <recent name="E:\code\test_blog\vue" />
-      <recent name="E:\code\test_blog\vue\src\views\foreground\components" />
-      <recent name="E:\code\test_blog\vue\src\views\backstage\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\test_blog\vue\src\views\foreground" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -102,7 +117,11 @@
       <workItem from="1692258635605" duration="460000" />
       <workItem from="1692259564909" duration="267000" />
       <workItem from="1692263098227" duration="41000" />
-      <workItem from="1692265483127" duration="335000" />
+      <workItem from="1692265483127" duration="6117000" />
+      <workItem from="1692275211024" duration="1395000" />
+      <workItem from="1692281335754" duration="5646000" />
+      <workItem from="1692319676204" duration="51555000" />
+      <workItem from="1692405832341" duration="7124000" />
     </task>
     <task id="LOCAL-00001" summary="添加文献上传功能">
       <option name="closed" value="true" />
@@ -120,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692088603218</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加标签跳转功能">
+      <option name="closed" value="true" />
+      <created>1692266024327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692266024327</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

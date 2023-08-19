@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @select="handleSelect" active-text-color="gray"
+      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @click="handleClick" active-text-color="gray"
         background-color="#f9f9f9" text-color="black">
         <el-menu-item index="1">
           <template #title>
@@ -49,7 +49,7 @@
   import router from '@/router'
 
 
-  let handleSelect = (key) => {
+  let handleClick = (key) => {
     if (key == '1') {
       router.push('/index')
     } else {

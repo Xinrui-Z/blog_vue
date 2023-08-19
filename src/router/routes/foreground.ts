@@ -28,22 +28,22 @@ export default [
     },
     {
         name: 'about',
-        path: '/about',
+        path: '/front/about',
         component: () => import('@/views/foreground/About.vue')
     },
     {
         name: 'message',
-        path: '/message',
+        path: '/front/message',
         component: () => import('@/views/foreground/MessageBoard.vue')
     },
     {
         name: 'tagsPaper',
-        path: '/tagsPaper/:label', // 动态参数 :label
+        path: '/api/front/tagsPaper/:label', // 动态参数 :label
         component: () => import('@/views/foreground/tagsPapers.vue')
     },
     {
         name: 'tagsArticle',
-        path: '/tagsArticle/:label', // 动态参数 :label
+        path: '/api/front/tagsArticle/:label', // 动态参数 :label
         component: () => import('@/views/foreground/tagsArticles.vue')
     }
 

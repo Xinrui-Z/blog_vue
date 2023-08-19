@@ -1,13 +1,5 @@
 import { defineStore } from "pinia"
-import {
-    reqPostPaper,
-    reqGetPapers,
-    reqPutPaper,
-    reqGetPaperById,
-    reqGetPaperByLabel,
-    reqDeletePaper,
-    reqGetLabelsPaperAndCount
-} from "@/api/index.ts"
+import { reqPostPaper, reqGetPapers, reqPutPaper,  reqGetPaperById, reqGetPaperByLabel, reqDeletePaper, reqGetLabelsPaperAndCount,} from "@/api/index.ts"
 import { Paper } from '@/types/type'
 import router from '@/router'
 import { ElMessage } from "element-plus"
@@ -61,9 +53,9 @@ export const usePaperStore = defineStore('paper', {
         },
 
         // 获取标签
-        getLabelsAndCount() {
+        getLabelsPaperAndCount() {
             reqGetLabelsPaperAndCount().then(res => {
-                this.labelList = res.data.data.labels;
+                this.labelList = res.data.data.labels
             })
         },
 

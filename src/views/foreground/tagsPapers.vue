@@ -2,44 +2,55 @@
   <el-row justify="center">
     <el-col :xs="22" :sm="20" :md="20" :lg="12">
       <div class="papers">
-        <PaperCardList :papers="papers" />
+        <PaperCardListTag /> <!-- Use .value here -->
       </div>
     </el-col>
   </el-row>
-  <el-pagination layout="prev, pager, next" v-model:current-page="page" v-model:page-size="pageSize"
-                 :total="paperList.total" @current-change="handleCurrentChange" />
+  <el-pagination
+      layout="prev, pager, next"
+      v-model:current-page="page"
+      v-model:page-size="pageSize"
+      :total="paperStore.paperListTotal" @current-change="handleCurrentChange"/>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
-import router from '@/router'
-import PaperCardList from '@/views/foreground/components/PaperCardList.vue'
+<script setup>
+import { ref, onMounted } from 'vue'
+import PaperCardListTag from "@/views/foreground/components/PaperCardListTag.vue"
 import { usePaperStore } from '@/store/usePaperStore'
-import useRoute from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const page = ref(1)
 const pageSize = ref(6)
-const store = usePaperStore()
-const paperList = computed(() => store.paperList)
-const papers = computed(() => store.papers) // Use the papers from the store
+const paperStore = usePaperStore()
+const router = useRouter()
+const isLoaded = ref(false)
 
-// Call getPaperByLabel when the component is mounted
-onMounted(() => {
-  const route = useRoute() // Import useRoute from 'vue-router'
-  const label = route.label // Get the label parameter from the route
-  store.getPaperByLabel(label)
-})
-
-const handleCurrentChange = () => {
-  store.getPapers(page.value, pageSize.value)
+const handleCurrentChange = (newPage) => {
+  page.value = newPage;
 }
 
+onMounted(async () => {
+  try {
+    const label = router.currentRoute.value.params.label;
+    console.log("tagsPapers mounted with label:", label);
+
+    // Call the getPaperByLabel function
+    await paperStore.getPaperByLabel(label);
+
+    // Print the fetched data
+    console.log("Fetched paper data:", paperStore.paperList.value);
+
+    isLoaded.value = true;
+  } catch (error) {
+    console.error("Error loading data:", error);
+  }
+});
 </script>
 
 <style scoped>
 .page-description {
   text-align: center;
-  font: 36px/1 Tahoma, Helvetica, Arial, ”\5b8b\4f53”, sans-serif;
+  font: 36px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .el-row {
