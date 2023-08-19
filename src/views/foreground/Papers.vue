@@ -2,6 +2,7 @@
     <el-row  justify="center">
         <el-col :xs="22" :sm="20" :md="20" :lg="12" >
             <div class="papers">
+              <h1>Reading</h1>
                 <PaperCardList />
             </div>
         </el-col>

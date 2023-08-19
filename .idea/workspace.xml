@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b990ff1-782f-463a-bb55-7050dd11e482" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/useArticleStoreTag.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/usePaperStoreTag.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardListTag.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/foreground/components/PaperCardListTag.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/http.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/index.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/index.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/routes/backstage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes/backstage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/routes/foreground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes/foreground.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/useArticleStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/useArticleStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/usePaperStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/usePaperStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/ForeGround.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ForeGround.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/PaperManagement/PaperList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/backstage/components/PaperEditPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/backstage/components/PaperEditPanel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/About.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/Articles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/components/ArticleCardList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/components/PaperCardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/components/PaperCardList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/foreground/Papers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/Papers.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/foreground/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/tagsArticles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/tagsArticles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/foreground/tagsPapers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/foreground/tagsPapers.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/code/test_blog/vue/src/views/foreground/components",
+    "last_opened_file_path": "E:/code/test_blog/vue/src/assets/css",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,13 +86,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\test_blog\vue\src\assets\css" />
+      <recent name="E:\code\test_blog\vue\src\views\foreground" />
       <recent name="E:\code\test_blog\vue\src\views\foreground\components" />
       <recent name="E:\code\test_blog\vue\src\store" />
       <recent name="E:\code\test_blog\vue\src\plugins" />
-      <recent name="E:\code\test_blog\vue\src\views\foreground" />
-      <recent name="E:\code\test_blog\vue\src\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\test_blog\vue\src\assets\images" />
+      <recent name="E:\code\test_blog\vue\src\views\style" />
       <recent name="E:\code\test_blog\vue\src\views\foreground" />
     </key>
   </component>
@@ -121,7 +120,7 @@
       <workItem from="1692275211024" duration="1395000" />
       <workItem from="1692281335754" duration="5646000" />
       <workItem from="1692319676204" duration="51555000" />
-      <workItem from="1692405832341" duration="7124000" />
+      <workItem from="1692405832341" duration="27736000" />
     </task>
     <task id="LOCAL-00001" summary="添加文献上传功能">
       <option name="closed" value="true" />
@@ -147,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692266024327</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加标签导航功能">
+      <option name="closed" value="true" />
+      <created>1692413248247</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692413248247</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +174,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加文献上传功能" />
     <MESSAGE value="添加标签跳转功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加标签跳转功能" />
+    <MESSAGE value="添加标签导航功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加标签导航功能" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

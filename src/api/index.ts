@@ -109,6 +109,14 @@ export function reqGetArticleById(aid: long) {
 //   }
 // }
 
+// 获取博客 -- 根据label
+export function reqGetUser(label: string) {
+  return request({
+    url: `/front/about/${label}`,
+    method: 'get',
+  })
+}
+
 export async function reqGetArticleByLabel(label: string) {
   try {
     const token = localStorage.getItem("token");
@@ -187,7 +195,7 @@ export async function reqGetPaperByLabel(label: string) {
 // 删除博客 -- 根据id
 export function reqDeletePaper(aid: long) {
   return request({
-    url: `/article/deletepaper/${aid}`,
+    url: `/paper/deletepaper/${aid}`,
     method: 'delete'
   })
 }

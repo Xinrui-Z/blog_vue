@@ -32,6 +32,11 @@ export default [
                         component: () => import('@/views/backstage/BlogManagement/BlogEdit.vue')
                     },
                     {
+                        name: 'editPaper',
+                        path: 'editPaper',
+                        component: () => import('@/views/backstage/PaperManagement/PaperEdit.vue')
+                    },
+                    {
                         name: 'mydocuments',
                         path: 'mydocuments',
                         component: () => import('@/views/backstage/PaperManagement/PaperList.vue')

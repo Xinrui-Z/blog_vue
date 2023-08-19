@@ -1,7 +1,7 @@
 <template>
   <el-container>
-    <el-header>
-      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @click="handleClick" active-text-color="gray"
+    <el-header >
+      <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="true" @select="handleSelect" active-text-color="gray"
         background-color="#f9f9f9" text-color="black">
         <el-menu-item index="1">
           <template #title>
@@ -16,12 +16,12 @@
         </el-menu-item>
         <el-menu-item index="articles">
           <template #title>
-            <h4>BLOGS</h4>
+            <h4>ARTICLES</h4>
           </template>
         </el-menu-item>
         <el-menu-item index="papers">
           <template #title>
-            <h4>PAPERS</h4>
+            <h4>READING</h4>
           </template>
         </el-menu-item>
         <el-menu-item index="about">
@@ -49,13 +49,16 @@
   import router from '@/router'
 
 
-  let handleClick = (key) => {
-    if (key == '1') {
-      router.push('/index')
+  let handleSelect = (key) => {
+    console.log("handleClick called with key:", key);
+    if (key === '1') {
+      router.push('/index');
     } else {
-      router.push(`/${key}`)
+      console.log("handleClick success! Navigating to:", `/${key}`);
+      router.push(`/${key}`);
     }
-  }
+  };
+
 
 </script>
 
@@ -67,7 +70,7 @@
   .el-container {
     margin: 0;
     min-height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
   }
 
   .el-header {
@@ -83,7 +86,7 @@
     width: 100%;
     right: 0;
     top: 0;
-    z-index: 999; 
+    z-index: 999;
   }
 
   .el-menu--horizontal>.el-menu-item {

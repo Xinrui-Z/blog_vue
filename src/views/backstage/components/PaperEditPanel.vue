@@ -1,7 +1,6 @@
 <template>
   <div class="editor-div">
-    <v-md-editor height="400px" @save="handleSave" v-model="paper.content" autofocus="true"
-                 @upload-image="handleUploadImage" :disabled-menus="[]" />
+    <v-md-editor height="400px" @save="handleSave" v-model="paper.content" autofocus="true"/>
     <el-form label-width="100px" style="max-width: 460px" label-position="left">
       <el-form-item label="标签">
         <el-input v-model="paper.label" />
@@ -12,8 +11,8 @@
       <el-form-item label="作者">
         <el-input type="textarea" v-model="paper.author" />
       </el-form-item>
-      <el-form-item label="摘要">
-        <el-input type="textarea" v-model="paper.digest" />
+      <el-form-item label="来源">
+        <el-input type="textarea" v-model="paper.source" />
       </el-form-item>
     </el-form>
   </div>
@@ -52,6 +51,7 @@ let paper = ref < Paper > ({
   labelCount: 1,
   title: '',
   author: '',
+  source:'',
   content: ''
 })
 

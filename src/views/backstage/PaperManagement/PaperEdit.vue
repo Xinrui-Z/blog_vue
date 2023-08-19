@@ -1,5 +1,5 @@
 <template>
-    <h2>发布文献阅读记录</h2>
+    <h2>发布阅读记录</h2>
     <PaperEditPanel />
 </template>
 

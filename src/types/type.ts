@@ -27,6 +27,7 @@ export interface Paper {
   label?: string
   title?: string
   author?: string
+  source?:string
   content?: string
   insertTime?: string
   updateTime?: string

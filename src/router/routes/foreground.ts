@@ -28,12 +28,12 @@ export default [
     },
     {
         name: 'about',
-        path: '/front/about',
+        path: '/about',
         component: () => import('@/views/foreground/About.vue')
     },
     {
         name: 'message',
-        path: '/front/message',
+        path: '/message',
         component: () => import('@/views/foreground/MessageBoard.vue')
     },
     {

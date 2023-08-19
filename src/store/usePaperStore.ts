@@ -23,7 +23,7 @@ export const usePaperStore = defineStore('paper', {
         }
     },
     actions: {
-        // 添加博客
+        // 添加文献
         postPaper(data: Paper) {
             reqPostPaper(data).then(res => {
                 this.getPapers(1, 15)
@@ -31,28 +31,28 @@ export const usePaperStore = defineStore('paper', {
             }).catch(err => Promise.reject(err))
         },
 
-        // 获取博客列表
+        // 获取文献列表
         getPapers(page: number, pageSize: number) {
             reqGetPapers(page, pageSize).then(res => {
                 this.paperList = res.data.data
             }).catch(err => Promise.reject(err))
         },
 
-        // 修改博客
+        // 修改文献
         putPaper(data: Paper) {
             reqPutPaper(data).then(res => {
                 ElMessage.success(res.data.message)
             }).catch(err => Promise.reject(err))
         },
 
-        // 获取博客 -- id
+        // 获取文献 -- id
         getPaperById(aid: any) {
             reqGetPaperById(aid).then(res => {
                 this.paper = res.data.data.paper
             }).catch(err => Promise.reject(err))
         },
 
-        // 删除博客 -- id
+        // 删除文献 -- id
         deletPaper(aid: string) {
             reqDeletePaper(aid).then(res => {
                 this.getPapers(1, 15)
