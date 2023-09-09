@@ -4,21 +4,23 @@
   </div>
   <el-row justify="space-evenly">
     <el-col :xs="22" :sm="20" :md="18" :lg="12">
+
+      <div class="papers">
+        <h2 class="item-title">Reading (点击可查看详细内容)</h2>
+        <PaperCardList/>
+        <el-icon class="paper-more" @click="goPapers">
+          <More />
+        </el-icon>
+      </div>
+
       <div class="articles">
-        <h2 class="item-title">Articles</h2>
+        <h2 class="item-title">Articles (点击可查看详细内容)</h2>
         <ArticleCardList />
         <el-icon class="article-more" @click="goArticles">
           <More />
         </el-icon>
       </div>
 
-      <div class="papers">
-        <h2 class="item-title">Reading</h2>
-        <PaperCardList/>
-        <el-icon class="paper-more" @click="goPapers">
-          <More />
-        </el-icon>
-      </div>
 
     </el-col>
     <el-col :xs="22" :sm="20" :md="20" :lg="3">
@@ -33,21 +35,23 @@
         <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
           {{user.email}}</el-link>
       </div>
+
       <div class="tags">
-        <h5 class="item-title">TAGS_BLOGS</h5>
+        <h5 class="item-title">TAGS_READING</h5>
+        <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
+                  :type="tagType[index % 4]">
+          <!-- 注意这里的@click事件绑定 -->
+          <el-button @click="handleTagPaperClick(item.label)">{{ item.label }}</el-button>
+        </el-badge>
+      </div>
+
+      <div class="tags">
+        <h5 class="item-title">TAGS_ARTICLES</h5>
         <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labels" :key="index"
                   :type="tagType[index % 4]">
           <!-- 注意这里的@click事件绑定 -->
           <!--                <el-button @click="goTagsArticle(item.label)">{{ item.label }}</el-button>-->
           <el-button @click="handleTagArticleClick (item.label)">{{ item.label }}</el-button>
-        </el-badge>
-      </div>
-      <div class="tags">
-        <h5 class="item-title">TAGS_PAPERS</h5>
-        <el-badge :value="item.labelCount" class="tags-item" v-for="(item, index) in labelsp" :key="index"
-                  :type="tagType[index % 4]">
-          <!-- 注意这里的@click事件绑定 -->
-          <el-button @click="handleTagPaperClick(item.label)">{{ item.label }}</el-button>
         </el-badge>
       </div>
     </el-col>

@@ -3,29 +3,30 @@
   </div>
   <el-row justify="space-evenly">
     <el-col :xs="22" :sm="20" :md="20" :lg="3">
-      <div class="about">
+      <div class="about" style="text-align: center">
         <h3 class="item-title">{{user.nickName}}</h3>
         <img :src="'data:image/jpeg;base64,'+user.avatarUrl" class="about-avatar" />
         <p class="about-sign">{{user.sign}}</p>
       </div>
       <div class="connect">
-        <h3 class="item-title">CONNECT</h3>
+        <p style="text-align: center">一个热爱生活的人</p>
+        <h3 class="item-title" style="text-align: center">CONNECT</h3>
         <el-link :icon="StarFilled" class="connect-link" :href="user.github">Github: {{user.github}}</el-link>
         <el-link :icon="Message" class="connect-link" :href="'mailto:'+user.email">Email:
           {{user.email}}</el-link>
       </div>
     </el-col>
 
-    <el-col :xs="22" :md="12" :lg="12" v-for="article in articles" :key="article.id">
-      <div>
-        <p style="text-align: center; margin: 20px;">
-          <el-icon style="margin-right: 5px">
-            <Clock />
-          </el-icon>更新于：{{article.updateTime}}
-        </p>
-        <v-md-editor :model-value="article.content" mode="preview" style="background-color: #f9f9f9;"></v-md-editor>
-      </div>
-    </el-col>
+<!--    <el-col :xs="22" :md="12" :lg="12" v-for="article in articles" :key="article.id">-->
+<!--      <div>-->
+<!--        <p style="text-align: center; margin: 20px;">-->
+<!--          <el-icon style="margin-right: 5px">-->
+<!--            <Clock />-->
+<!--          </el-icon>更新于：{{article.updateTime}}-->
+<!--        </p>-->
+<!--        <v-md-editor :model-value="article.content" mode="preview" style="background-color: #f9f9f9;"></v-md-editor>-->
+<!--      </div>-->
+<!--    </el-col>-->
   </el-row>
 </template>
 
